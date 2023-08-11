@@ -8,6 +8,10 @@ class Attack(db.Model):
 
         id = db.Column(db.Integer, primary_key=True)
         name= db.Column(db.String(255), nullable=False)
+        image_url = db.Column(db.String(255), nullable=False)
+        description = db.Column(db.String(255), nullable=False)
+        ramen_cost = db.Column(db.Integer, nullable=False)
+        damage = db.Column(db.Integer, nullable=False)
 
     def to_dict(self):
         return {
