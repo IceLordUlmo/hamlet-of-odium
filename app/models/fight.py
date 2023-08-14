@@ -6,10 +6,10 @@ class Fight(db.Model):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-        id = db.Column(db.Integer, primary_key=True)
-        user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('user.id')))
-        monster_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('monsters.id')))
-        monster_hp = db.Column(db.Integer)
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
+    monster_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('monsters.id')))
+    monster_hp = db.Column(db.Integer)
         
     def to_dict(self):
         return {
