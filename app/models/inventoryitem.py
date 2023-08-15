@@ -19,6 +19,6 @@ class InventoryItem(db.Model):
             "name": self.name,
             "description": self.description,
             "image_url": self.image_url,
-            "quantity": self.quantity
+            "quantity": self.quantity,
             "user_id": self.user_id
         }

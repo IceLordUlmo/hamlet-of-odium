@@ -22,5 +22,5 @@ class Encounter(db.Model):
             "image_url": self.image_url,
             "description": self.description,
             "fight_monster_id": self.fight_monster_id,
-            "reward_item_id": selfreward_item_id.
+            "reward_item_id": self.reward_item_id
         }

@@ -18,7 +18,7 @@ class Equipment(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "description": self.description
+            "description": self.description,
             "slot": self.slot,
             "damage": self.damage,
             "armor": self.armor,

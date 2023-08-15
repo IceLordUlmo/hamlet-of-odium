@@ -18,5 +18,5 @@ class Location(db.Model):
             "description": self.description,
             "name": self.name,
             "image_url": self.image_url,
-            "required_level" = self.required_level
+            "required_level" : self.required_level
         }
