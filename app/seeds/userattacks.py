@@ -3,11 +3,13 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_userattacks():
-    demo = UserAttack(
-        username='UserAttackname', email='demo@aa.io', password='password')
+    # demo = UserAttack(
+    #     username='UserAttackname', email='demo@aa.io', password='password')
 
-    db.session.add(demo)
-    db.session.commit()
+    # db.session.add(demo)
+    # db.session.commit()
+
+    # INTENTIONALLY BLANK
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
 # have a built in function to do this. With postgres in production TRUNCATE

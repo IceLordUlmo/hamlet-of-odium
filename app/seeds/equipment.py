@@ -1,15 +1,15 @@
-from app.models import db, Fight, environment, SCHEMA
+from app.models import db, Equipment, environment, SCHEMA
 from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
-def seed_fights():
+def seed_equipment():
     # demo = Fight(
     #     name='Seed Fight 1',
     #     user_)
 
     # db.session.add(demo)
     # db.session.commit()
-
+    
     # THIS SPACE INTENTIONALLY LEFT BLANK
 
     # NO FIGHTS ARE SEEDED
@@ -20,10 +20,10 @@ def seed_fights():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_fights():
+def undo_equipment():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.fights RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.equipment RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM fights"))
+        db.session.execute(text("DELETE FROM equipment"))
         
     db.session.commit()

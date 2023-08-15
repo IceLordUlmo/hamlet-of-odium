@@ -4,7 +4,11 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_locations():
     demo = Location(
-        username='Locationname', email='demo@aa.io', password='password')
+        name = 'Seed Location 1',
+        description = "Seed location 1 description",
+        required_level = 1,
+        image_url = "seedLocation1.jpg"
+        )
 
     db.session.add(demo)
     db.session.commit()

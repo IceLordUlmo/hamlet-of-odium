@@ -16,7 +16,9 @@ class Attack(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "server_id": self.server_id,
+            "name": self.name,
+            "image_url": self.image_url,
             "description": self.description,
-            "name": self.name
+            "ramen_cose": self.ramen_cost,
+            "damage": self.damage
         }

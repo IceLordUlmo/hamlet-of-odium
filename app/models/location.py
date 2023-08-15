@@ -7,12 +7,16 @@ class Location(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    name= db.Column(db.String(255), nullable=False)
+    name = db.Column(db.String(255), nullable=False)
+    required_level = db.Column(db.Integer)
+    description = db.Column(db.String(255))
+    image_url = db.Column(db.String(255))
 
     def to_dict(self):
         return {
             "id": self.id,
-            "server_id": self.server_id,
             "description": self.description,
-            "name": self.name
+            "name": self.name,
+            "image_url": self.image_url,
+            "required_level" = self.required_level
         }

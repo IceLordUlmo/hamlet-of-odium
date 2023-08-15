@@ -11,11 +11,14 @@ class InventoryItem(db.Model):
     description = db.Column(db.String(255), nullable=False)
     image_url = db.Column(db.String(255), nullable=False)
     quantity = db.Column(db.Integer)
-        
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
+
     def to_dict(self):
         return {
             "id": self.id,
-            "server_id": self.server_id,
+            "name": self.name,
             "description": self.description,
-            "name": self.name
+            "image_url": self.image_url,
+            "quantity": self.quantity
+            "user_id": self.user_id
         }

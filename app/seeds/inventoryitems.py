@@ -4,7 +4,11 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_inventoryitems():
     demo = InventoryItem(
-        username='InventoryItemname', email='demo@aa.io', password='password')
+        name='Seeded Inventory Item 1 for User 1',
+        description = 'the original item already in inventory',
+        image_url = 'seededItemUrl.jpg',
+        quantity = 3,
+        user_id = 1)
 
     db.session.add(demo)
     db.session.commit()

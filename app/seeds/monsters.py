@@ -4,7 +4,15 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_monsters():
     demo = Monster(
-        username='Monstername', email='demo@aa.io', password='password')
+        name='Monster 1',
+        description='could be a jabberwocky who knows',
+        max_hp = 5,
+        damage = 1,
+        ramen = 2,
+        experience = 1,
+        image_url = 'monster1.jpg'
+        )
+
 
     db.session.add(demo)
     db.session.commit()

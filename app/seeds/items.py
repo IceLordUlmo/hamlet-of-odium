@@ -4,7 +4,11 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_items():
     demo = Item(
-        username='Itemname', email='demo@aa.io', password='password')
+        name = 'Seeded Item 1',
+        description = 'seed item 1 description',
+        image_url = 'seedItem1.jpg',
+        ramen_cost = 1
+    )
 
     db.session.add(demo)
     db.session.commit()

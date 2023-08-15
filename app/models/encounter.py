@@ -17,7 +17,10 @@ class Encounter(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "server_id": self.server_id,
+            "name": self.name,
+            "location_id": self.location_id,
+            "image_url": self.image_url,
             "description": self.description,
-            "name": self.name
+            "fight_monster_id": self.fight_monster_id,
+            "reward_item_id": selfreward_item_id.
         }

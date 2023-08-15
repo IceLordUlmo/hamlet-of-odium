@@ -8,11 +8,21 @@ class Monster(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name= db.Column(db.String(255), nullable=False)
+    description = db.Column(db.String(255))
+    max_hp = db.Column(db.Integer)
+    damage = db.Column(db.Integer)
+    ramen = db.Column(db.Integer)
+    experience = db.Column(db.Integer)
+    image_url = db.Column(db.String(255))
 
     def to_dict(self):
         return {
             "id": self.id,
-            "server_id": self.server_id,
+            "name": self.name,
             "description": self.description,
-            "name": self.name
+            "max_hp": self.max_hp,
+            "damage": self.damage,
+            "ramen": self.ramen,
+            "experience": self.experience,
+            "image_url": self.image_url
         }

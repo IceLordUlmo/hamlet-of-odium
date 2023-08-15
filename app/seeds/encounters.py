@@ -4,7 +4,12 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_encounters():
     demo = Encounter(
-        username='Encountername', email='demo@aa.io', password='password')
+        name='Seed Encounter 1', 
+        location_id = 1, 
+        image_url='encounterSeedUrl.jpg', 
+        description = 'The first seeded encounter',
+        fight_monster_id = 1,
+        reward_item_id = 1)
 
     db.session.add(demo)
     db.session.commit()

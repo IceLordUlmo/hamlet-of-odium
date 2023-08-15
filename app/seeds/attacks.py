@@ -4,8 +4,13 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_attacks():
     demo = Attack(
-        username='Attackname', email='demo@aa.io', password='password')
-
+        name='Attackname',
+        image_url = 'nullSeedData.jpg',
+        description = 'Basic Seed Attack',
+        ramen_cost = 2,
+        damage = 1
+    )
+    
     db.session.add(demo)
     db.session.commit()
 
