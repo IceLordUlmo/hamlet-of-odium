@@ -7,12 +7,16 @@ class Item(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    name= db.Column(db.String(255), nullable=False)
+    name = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.String(255), nullable=False)
+    image_url = db.Column(db.String(255), nullable=False)
+    ramen_cost = db.Column(db.Integer)
 
     def to_dict(self):
         return {
             "id": self.id,
-            "server_id": self.server_id,
+            "name": self.name,
             "description": self.description,
-            "name": self.name
+            "image_url": self.image_url,
+            "ramen_cost": self.ramen_cost,
         }

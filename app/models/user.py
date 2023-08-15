@@ -13,6 +13,11 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    level = db.Column(db.Integer, default=1)
+    experience = db.Column(db.Integer, default=0)
+    max_hp = db.Column(db.Integer, default=10)
+    current_hp = db.Column(db.Integer, default=10)
+    ramen = db.Column(db.Integer, default=5)
 
     @property
     def password(self):
@@ -29,5 +34,10 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'level': self.level,
+            'experience': self.experience,
+            'max_hp': self.max_hp,
+            'current_hp': self.current_hp,
+            'ramen': self.ramen
         }

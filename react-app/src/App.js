@@ -4,8 +4,10 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
-import Navigation from "./components/Navigation";
-
+import Main from './components/Main'
+import Items from './components/Items'
+import ProtectedRoute from './components/auth/ProtectedRoute'
+import ErrorPage from './components/ErrorPage'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,15 +17,17 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <ProtectedRoute exact path="/" component={Main} />
+          <ProtectedRoute exact path="/items" component={Items} />
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="*" component={ErrorPage} />
         </Switch>
       )}
     </>

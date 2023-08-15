@@ -21,6 +21,15 @@ function LoginFormPage() {
     }
   };
 
+  function LogInDemo() {
+    const demoUserInfo = {
+      email: 'demo@aa.io',
+      password: 'password'
+    }
+
+    return dispatch(login(demoUserInfo.email, demoUserInfo.password));
+  }
+
   return (
     <>
       <h1>Log In</h1>
@@ -48,8 +57,11 @@ function LoginFormPage() {
             required
           />
         </label>
+
         <button type="submit">Log In</button>
       </form>
+
+      <button onClick={LogInDemo}>Log In User 1</button>
     </>
   );
 }

@@ -14,7 +14,7 @@ class Fight(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "server_id": self.server_id,
-            "description": self.description,
-            "name": self.name
+            "user_id": self.user_id,
+            "monster_id": self.monster_id,
+            "monster_hp": self.monster_hp
         }

@@ -1,6 +1,18 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 
+from .monsters import seed_monsters, undo_monsters
+from .locations import seed_locations, undo_locations
+
+from .encounters import seed_encounters, undo_encounters
+from .attacks import seed_attacks, undo_attacks
+
+from .items import seed_items, undo_items
+from .inventoryitems import seed_inventoryitems, undo_inventoryitems
+
+from .fights import seed_fights, undo_fights
+from .equipment import seed_equipment, undo_equipment
+
 from app.models.db import db, environment, SCHEMA
 
 # Creates a seed group to hold our commands
@@ -16,29 +28,37 @@ def seed():
         # command, which will  truncate all tables prefixed with 
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
-        undo_userattacks()
-        undo_attacks()
-        undo_enocunters()
+        undo_equipment()
         undo_fights()
+        undo_userattacks()
         undo_inventoryitems()
         undo_items()
+        undo_attacks()
+        undo_encounters()
         undo_locations()
         undo_monsters()
         undo_users()
     seed_users()
-    seed_userattacks()
-    seed_attacks()
-    seed_enocunters()
-    seed_fights()
-    seed_inventoryitems()
-    seed_items()
-    seed_locations()
     seed_monsters()
+    seed_locations()
+    seed_encounters()
+    seed_attacks()
+    seed_items()
+    
     # Add other seed functions here
 
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
+    undo_equipment()
+    undo_fights()
+    undo_userattacks()
+    undo_inventoryitems()
+    undo_items()
+    undo_attacks()
+    undo_encounters()
+    undo_locations()
+    undo_monsters()
     undo_users()
     # Add other undo functions here
