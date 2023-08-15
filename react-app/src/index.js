@@ -9,7 +9,10 @@ import * as sessionActions from "./store/session";
 import App from "./App";
 
 import "./index.css";
-
+// const preload = {
+// 	session: {},
+// 	items: { items: {}, inventory: {} }
+// }
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {

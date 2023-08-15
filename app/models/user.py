@@ -17,7 +17,8 @@ class User(db.Model, UserMixin):
     experience = db.Column(db.Integer, default=0)
     max_hp = db.Column(db.Integer, default=10)
     current_hp = db.Column(db.Integer, default=10)
-    
+    ramen = db.Column(db.Integer, default=5)
+
     @property
     def password(self):
         return self.hashed_password
@@ -37,5 +38,6 @@ class User(db.Model, UserMixin):
             'level': self.level,
             'experience': self.experience,
             'max_hp': self.max_hp,
-            'current_hp': self.current_hp
+            'current_hp': self.current_hp,
+            'ramen': self.ramen
         }
