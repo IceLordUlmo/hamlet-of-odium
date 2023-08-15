@@ -39,6 +39,36 @@ export const loadInventoryThunk = () => async (dispatch) => {
     return dispatch(loadInventoryAction(data));
 }
 
+export const buyItemThunk = itemId => async (dispatch) => {
+    const res = await fetch(`api/items/${itemId}/buy`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            quantity: 1
+        })
+    })
+    const data = await res.json();
+
+    return dispatch(loadInventoryThunk())
+}
+
+export const sellItemThunk = itemId => async (dispatch) => {
+    const res = await fetch(`api/items/${itemId}/buy`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            quantity: -1
+        })
+    })
+    const data = await res.json();
+
+    return dispatch(loadInventoryThunk())
+}
+
 // initial state
 const initialState = { items: {}, inventory: {} };
 // reducer

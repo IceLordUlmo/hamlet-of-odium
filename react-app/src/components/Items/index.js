@@ -19,7 +19,7 @@ const Items = () => {
     useEffect(() => {
         dispatch(itemActions.loadItemsThunk())
         dispatch(itemActions.loadInventoryThunk())
-    })
+    }, [dispatch])
 
 
     function LogOut(e) {
@@ -29,10 +29,16 @@ const Items = () => {
 
     return (
         <div>
-            User : {user.username}
-            Health : {user.current_hp} / {user.max_hp}
-            {itemsList.map(item => <ItemDisplay item={item} />)}
-            {inventoryList.map(item => <InventoryDisplay item={item} />)}
+            <p>User : {user.username}</p>
+            <p>Health : {user.current_hp} / {user.max_hp}</p>
+            <p>Ramen : {user.ramen}</p>
+            <p>Items for Sale:</p>
+            <p>
+                {itemsList.map(item => <ItemDisplay key={item.id} item={item} />)}
+            </p>
+            <p>
+                {inventoryList.map(item => <InventoryDisplay key={item.id} item={item} />)}
+            </p>
             <Link to='/'>Main</Link>
             <button onClick={LogOut}>Log Out</button>
         </div>
