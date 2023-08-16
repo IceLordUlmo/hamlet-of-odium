@@ -41,11 +41,11 @@ def seed():
         undo_monsters()
         undo_users()
     seed_users()
+    seed_items()
     seed_monsters()
     seed_locations()
     seed_encounters()
     seed_attacks()
-    seed_items()
     
     # Add other seed functions here
 
