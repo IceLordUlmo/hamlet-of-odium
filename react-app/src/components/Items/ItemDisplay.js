@@ -1,6 +1,6 @@
 import * as itemActions from '../../store/items'
 import { useDispatch } from 'react-redux'
-
+import Cost from '../Cost'
 const ItemDisplay = ({ item }) => {
     const dispatch = useDispatch()
 
@@ -9,7 +9,7 @@ const ItemDisplay = ({ item }) => {
     }
 
     return (
-        < div > Name of item: {item.name} Price: {item.ramen_cost} ramen
+        < div > Name of item: {item.name} Price: <Cost cost={item.ramen_cost} />
             < button onClick={purchase} > Buy</button >
         </div >
     )
