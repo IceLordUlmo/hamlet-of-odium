@@ -77,7 +77,7 @@ export const logout = () => async (dispatch) => {
 
 export const refresh = (userId) => async (dispatch) => {
 	const response = await fetch(`/api/users/${userId}`)
-	const user = response.json()
+	const user = await response.json()
 	return dispatch(updateUser(user))
 }
 

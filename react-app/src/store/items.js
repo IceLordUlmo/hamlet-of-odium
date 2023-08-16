@@ -1,6 +1,10 @@
+// imports
+import { refresh } from './session'
+
 // action types
 const GET_ITEMS = 'odium/items/GET_ITEMS'
 const GET_INVENTORY = 'odium/items/GET_INVENTORY'
+
 // action creators
 export const loadItemsAction = (items) => {
     return {
@@ -50,7 +54,7 @@ export const buyItemThunk = itemId => async (dispatch) => {
         })
     })
     const data = await res.json();
-
+    dispatch(refresh(data.user_id))
     return dispatch(loadInventoryThunk())
 }
 
@@ -65,7 +69,7 @@ export const sellItemThunk = itemId => async (dispatch) => {
         })
     })
     const data = await res.json();
-
+    dispatch(refresh(data.user_id))
     return dispatch(loadInventoryThunk())
 }
 
