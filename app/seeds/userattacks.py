@@ -19,8 +19,8 @@ def seed_userattacks():
 # it will reset the primary keys for you as well.
 def undo_userattacks():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.userattacks RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.user_attacks RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM userattacks"))
+        db.session.execute(text("DELETE FROM user_attacks"))
         
     db.session.commit()
