@@ -13,6 +13,8 @@ from .inventoryitems import seed_inventoryitems, undo_inventoryitems
 from .fights import seed_fights, undo_fights
 from .equipment import seed_equipment, undo_equipment
 
+from .userattacks import seed_userattacks, undo_userattacks
+
 from app.models.db import db, environment, SCHEMA
 
 # Creates a seed group to hold our commands
