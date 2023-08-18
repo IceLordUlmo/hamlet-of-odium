@@ -4,12 +4,14 @@ import session from './session'
 import itemsReducer from './items'
 import mapReducer from './maps'
 import attackReducer from './attacks'
+import fightsReducer from './fights'
 
 const rootReducer = combineReducers({
   session,
   items: itemsReducer,
   maps: mapReducer,
-  attacks: attackReducer
+  attacks: attackReducer,
+  fights: fightsReducer
 });
 
 
