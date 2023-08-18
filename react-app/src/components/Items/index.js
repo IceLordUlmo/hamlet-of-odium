@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from "../../store/session"
 import './Items.css'
-import { Link } from 'react-router-dom'
 import * as itemActions from '../../store/items'
 import ItemDisplay from './ItemDisplay'
 import InventoryDisplay from './InventoryDisplay'
@@ -20,12 +18,6 @@ const Items = () => {
         dispatch(itemActions.loadItemsThunk())
         dispatch(itemActions.loadInventoryThunk())
     }, [dispatch])
-
-
-    function LogOut(e) {
-        e.preventDefault();
-        dispatch(logout());
-    }
 
     return (
         <div>
