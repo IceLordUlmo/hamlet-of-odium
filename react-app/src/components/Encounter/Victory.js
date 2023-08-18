@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+const Victory = () => {
+    const fight = useSelector((store) => store.fights.defeated)
+    const monsters = useSelector((store) => store.fights.monsters)
 
-const Victory = ({ ramen, experience }) => {
     return (<div>
         <p>Victory</p>
         <p>
-            Ramen: {ramen}
+            Ramen: {monsters[fight.monster_id].ramen}
         </p>
         <p>
-            Experience: {experience}
+            Experience: {monsters[fight.monster_id].experience}
         </p>
-        <Link to='/map'>Back to Map</Link>
+        <Link to='/maps'>Back to Maps</Link>
     </div>)
 }
 
