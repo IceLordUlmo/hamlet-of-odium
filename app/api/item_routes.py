@@ -46,6 +46,10 @@ def buy_item(itemId):
         if inventoryEntry:
             if inventoryEntry.quantity + quantity > -1:
                 inventoryEntry.quantity = inventoryEntry.quantity + quantity
+                if inventoryEntry.quantity == 0:
+                    db.session.delete(inventoryEntry)
+                    db.session.commit()
+                    return { 'result' : 'Item entry removed' }
             else:
                 response = { 'error' : "Cannot change quantity in that way"}
                 return response

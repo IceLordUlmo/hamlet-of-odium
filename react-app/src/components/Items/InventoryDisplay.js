@@ -8,7 +8,7 @@ const InventoryDisplay = ({ item }) => {
     }
 
     return (
-        <div>{item.name} {item.quantity} <p><button onClick={sell}>Sell</button></p></div>
+        <div>{item.name} Quantity in inventory: {item.quantity} <p><button onClick={sell}>Sell</button></p></div>
     )
 }
 

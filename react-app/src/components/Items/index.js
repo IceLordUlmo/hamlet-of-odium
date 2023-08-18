@@ -31,7 +31,7 @@ const Items = () => {
         <div>
             <p>Items for Sale:</p>
             <p>
-                {itemsList.map(item => <ItemDisplay key={item.id} item={item} />)}
+                {itemsList.map(item => <ItemDisplay key={item.id} item={item} ramen={user.ramen} />)}
             </p>
             <p>
                 {inventoryList.map(item => <InventoryDisplay key={item.id} item={item} />)}

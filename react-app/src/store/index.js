@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import itemsReducer from './items'
 import mapReducer from './maps'
+import attackReducer from './attacks'
 
 const rootReducer = combineReducers({
   session,
   items: itemsReducer,
-  maps: mapReducer
+  maps: mapReducer,
+  attacks: attackReducer
 });
 
 

@@ -5,9 +5,11 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import LeftNav from "./components/LeftNav";
+import Attacks from './components/Attacks'
 import Maps from "./components/Maps";
 import Main from './components/Main'
 import Items from './components/Items'
+import Location from './components/Location'
 import ProtectedRoute from './components/auth/ProtectedRoute'
 import ErrorPage from './components/ErrorPage'
 import './App.css'
@@ -27,9 +29,12 @@ function App() {
           </div>
           <div id='right-app'>
             <Switch>
+              <Route path='/maps/:locationId'>
+                <Location />
+              </Route>
               <ProtectedRoute exact path="/" component={Main} />
               <ProtectedRoute exact path="/items" component={Items} />
-              <ProtectedRoute exact path="/attacks" component={Items} />
+              <ProtectedRoute exact path="/attacks" component={Attacks} />
               <ProtectedRoute exact path="/maps" component={Maps} />
               <Route path="/login" >
                 <LoginFormPage />
