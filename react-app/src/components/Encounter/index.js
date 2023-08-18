@@ -4,7 +4,7 @@ import './Encounter.css'
 import * as fightActions from '../../store/fights'
 import * as attackActions from '../../store/attacks'
 import * as mapActions from '../../store/maps'
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 
 const Encounter = () => {
     const dispatch = useDispatch();
@@ -24,8 +24,13 @@ const Encounter = () => {
         dispatch(fightActions.startFightThunk(encounters[encounterId].fight_monster_id))
         return null
     }
-    const attack = () => {
-        dispatch(fightActions.dealDamageThunk(1))
+    const attack = async () => {
+        const combat = await dispatch(fightActions.dealDamageThunk(1))
+        console.log('combat object', combat)
+        if (combat.type == 'victory') {
+            <Redirect to='/Victory'></Redirect>
+        }
+        dispatch(fightActions.loadFightThunk())
     }
 
     return (<div>

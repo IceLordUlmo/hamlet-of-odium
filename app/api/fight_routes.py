@@ -33,7 +33,7 @@ def damage_monster():
 
     form = DamageForm()
     response = {}
-
+    response['user_id'] = current_user.id
     damage = form['damage'].data
     fight = Fight.query.filter(Fight.user_id == current_user.id).first()
     monster = Monster.query.filter(Monster.id == fight.monster_id).first()

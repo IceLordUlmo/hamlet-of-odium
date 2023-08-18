@@ -72,8 +72,9 @@ export const dealDamageThunk = (damage) => async (dispatch) => {
         })
     })
     const data = await res.json();
-    dispatch(refresh())
-    return dispatch(loadFightThunk())
+    console.log('damage thunk data', data)
+    dispatch(refresh(data.user_id))
+    return data;
 }
 
 // initial state
