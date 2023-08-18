@@ -19,6 +19,6 @@ class Attack(db.Model):
             "name": self.name,
             "image_url": self.image_url,
             "description": self.description,
-            "ramen_cose": self.ramen_cost,
+            "ramen_cost": self.ramen_cost,
             "damage": self.damage
         }

@@ -44,7 +44,15 @@ def buy_item(itemId):
         inventoryEntry = InventoryItem.query.filter(InventoryItem.name == item.name).first()
 
         if inventoryEntry:
-            inventoryEntry.quantity = inventoryEntry.quantity + quantity
+            if inventoryEntry.quantity + quantity > -1:
+                inventoryEntry.quantity = inventoryEntry.quantity + quantity
+                if inventoryEntry.quantity == 0:
+                    db.session.delete(inventoryEntry)
+                    db.session.commit()
+                    return { 'result' : 'Item entry removed' }
+            else:
+                response = { 'error' : "Cannot change quantity in that way"}
+                return response
         else:
             inventoryEntry = InventoryItem(name = item.name, description = item.description, image_url = item.image_url, quantity = quantity, user_id = current_user.id)
             db.session.add(inventoryEntry)

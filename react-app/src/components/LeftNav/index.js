@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from "../../store/session"
-import './Main.css'
+import './LeftNav.css'
 import { Link } from 'react-router-dom'
-
-const Main = () => {
+import Cost from '../Cost'
+const LeftNav = () => {
     const user = useSelector((state) => state.session.user)
     const dispatch = useDispatch();
 
@@ -14,13 +14,16 @@ const Main = () => {
     }
 
     return (
-        <div>
-            User : {user.username}
-            Health : {user.current_hp} / {user.max_hp}
-            <Link to='/items'>Items</Link>
+        <div id='left-nav-container'>
+            <p>User: {user.username}</p>
+            <p>Health: {user.current_hp} / {user.max_hp}</p>
+            <p>Ramen: <Cost cost={user.ramen} /></p>
+            <p><Link to='/items'>Items</Link></p>
+            <p><Link to='/maps'>Map</Link></p>
+            <p><Link to='/attacks'>Attacks</Link></p>
             <button onClick={LogOut}>Log Out</button>
         </div>
     )
 }
 
-export default Main
+export default LeftNav
