@@ -32,7 +32,7 @@ function App() {
               <Route path='/maps/:locationId'>
                 <Location />
               </Route>
-              <ProtectedRoute exact path="/" component={Main} />
+              <ProtectedRoute exact path="/" component={Maps} />
               <ProtectedRoute exact path="/items" component={Items} />
               <ProtectedRoute exact path="/attacks" component={Attacks} />
               <ProtectedRoute exact path="/maps" component={Maps} />
