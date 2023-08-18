@@ -9,7 +9,9 @@ import Attacks from './components/Attacks'
 import Maps from "./components/Maps";
 import Items from './components/Items'
 import Location from './components/Location'
+import Encounter from './components/Encounter'
 import ProtectedRoute from './components/auth/ProtectedRoute'
+import Victory from './components/Encounter/Victory'
 import ErrorPage from './components/ErrorPage'
 import './App.css'
 function App() {
@@ -31,6 +33,10 @@ function App() {
               <Route path='/maps/:locationId'>
                 <Location />
               </Route>
+              <Route path='/encounters/:encounterId'>
+                <Encounter />
+              </Route>
+              <ProtectedRoute exact path="/victory" component={Victory} />
               <ProtectedRoute exact path="/" component={Maps} />
               <ProtectedRoute exact path="/items" component={Items} />
               <ProtectedRoute exact path="/attacks" component={Attacks} />
