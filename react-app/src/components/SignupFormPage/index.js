@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import './SignupForm.css';
+import { useHistory } from "react-router-dom";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -12,21 +13,24 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-
+  const history = useHistory();
   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-        const data = await dispatch(signUp(username, email, password));
-        if (data) {
-          setErrors(data)
-        }
+      const data = await dispatch(signUp(username, email, password));
+      if (data) {
+        setErrors(data)
+      }
     } else {
-        setErrors(['Confirm Password field must be the same as the Password field']);
+      setErrors(['Confirm Password field must be the same as the Password field']);
     }
   };
 
+  function LogIn() {
+    history.push('/login')
+  }
   return (
     <>
       <h1>Sign Up</h1>
@@ -70,8 +74,9 @@ function SignupFormPage() {
             required
           />
         </label>
-        <button type="submit">Sign Up</button>
+        <p><button type="submit">Sign Up</button></p>
       </form>
+      <p><button onClick={LogIn}>Back To Login Page</button></p>
     </>
   );
 }

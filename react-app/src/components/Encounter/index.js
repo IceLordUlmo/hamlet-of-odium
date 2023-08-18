@@ -33,7 +33,6 @@ const Encounter = () => {
             dispatch(fightActions.monsterDefeatedAction())
             history.push('/victory')
         }
-        dispatch(fightActions.loadFightThunk())
     }
 
     return (<div>
