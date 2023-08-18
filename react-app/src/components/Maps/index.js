@@ -2,10 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from "../../store/session"
 import './Maps.css'
-import { Link } from 'react-router-dom'
 import * as mapActions from '../../store/maps'
 import MapLocation from './MapLocation'
-// import InventoryDisplay from './InventoryDisplay'
 
 const Map = () => {
     const user = useSelector((state) => state.session.user)

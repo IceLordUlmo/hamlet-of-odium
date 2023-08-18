@@ -107,8 +107,9 @@ const fightsReducer = (state = initialState, action) => {
             newState.fight.monster_hp -= action.damage
             return newState;
         case MONSTER_DEFEATED:
-            state.defeated = { ...state.fight }
-            return state
+            newState = { monsters: { ...state.monsters }, fight: null }
+            newState.defeated = { ...state.fight }
+            return newState
         default:
             return state;
 
