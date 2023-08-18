@@ -5,6 +5,7 @@ const GET_FIGHT = 'odium/fights/GET_FIGHT'
 const GET_MONSTERS = 'odium/fights/GET_MONSTER'
 const DEAL_DAMAGE = 'odium/fights/DEAL_DAMAGE'
 const DELETE_FIGHT = 'odium/fights/DELETE_FIGHT'
+const MONSTER_DEFEATED = 'odium/fights/DEFEATED'
 
 // action creators
 const loadFightAction = (fight) => {
@@ -18,6 +19,12 @@ const loadMonstersAction = (monsters) => {
     return {
         type: GET_MONSTERS,
         monsters
+    }
+}
+
+export const monsterDefeatedAction = () => {
+    return {
+        type: MONSTER_DEFEATED
     }
 }
 
@@ -78,7 +85,7 @@ export const dealDamageThunk = (damage) => async (dispatch) => {
 }
 
 // initial state
-const initialState = { monsters: {}, fight: null };
+const initialState = { monsters: {}, fight: null, defeated: null };
 // reducer
 
 const fightsReducer = (state = initialState, action) => {
@@ -92,6 +99,10 @@ const fightsReducer = (state = initialState, action) => {
             newState = { ...state }
             newState.monsters = {}
             action.monsters.forEach((monster) => newState.monsters[monster.id] = monster)
+            return newState;
+        case MONSTER_DEFEATED:
+            state.defeated = { ...state.fight }
+            return state
         default:
             return state;
 

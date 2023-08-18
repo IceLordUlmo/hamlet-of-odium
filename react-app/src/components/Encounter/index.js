@@ -4,7 +4,7 @@ import './Encounter.css'
 import * as fightActions from '../../store/fights'
 import * as attackActions from '../../store/attacks'
 import * as mapActions from '../../store/maps'
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 const Encounter = () => {
     const dispatch = useDispatch();
@@ -12,10 +12,12 @@ const Encounter = () => {
     const encounters = useSelector((store) => store.maps.encounters)
     const fight = useSelector((store) => store.fights.fight)
     const monsters = useSelector((store) => store.fights.monsters)
+    const history = useHistory()
     useEffect(() => {
         dispatch(attackActions.loadLearnedAttacksThunk()).then(
             dispatch(mapActions.loadMapThunk())).then(
-                dispatch(fightActions.loadFightThunk()))
+                dispatch(fightActions.loadMonstersThunk())).then(
+                    dispatch(fightActions.loadFightThunk()))
     }, [dispatch])
     if (Object.values(encounters) == 0) {
         return null
@@ -28,7 +30,8 @@ const Encounter = () => {
         const combat = await dispatch(fightActions.dealDamageThunk(1))
         console.log('combat object', combat)
         if (combat.type == 'victory') {
-            <Redirect to='/Victory'></Redirect>
+            dispatch(fightActions.monsterDefeatedAction())
+            history.push('/victory')
         }
         dispatch(fightActions.loadFightThunk())
     }
