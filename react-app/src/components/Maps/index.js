@@ -34,9 +34,6 @@ const Map = () => {
             <p>
                 {locationsList.map(location => <MapLocation key={location.id} location={location} />)}
             </p>
-
-            <Link to='/'>Main</Link>
-            <button onClick={LogOut}>Log Out</button>
         </div>
     )
 }

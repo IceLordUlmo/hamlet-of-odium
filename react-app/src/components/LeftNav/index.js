@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logout } from "../../store/session"
 import './LeftNav.css'
 import { Link } from 'react-router-dom'
-
+import Cost from '../Cost'
 const LeftNav = () => {
     const user = useSelector((state) => state.session.user)
     const dispatch = useDispatch();
@@ -15,8 +15,9 @@ const LeftNav = () => {
 
     return (
         <div id='left-nav-container'>
-            <p>User : {user.username}</p>
-            <p>Health : {user.current_hp} / {user.max_hp}</p>
+            <p>User: {user.username}</p>
+            <p>Health: {user.current_hp} / {user.max_hp}</p>
+            <p>Ramen: <Cost cost={user.ramen} /></p>
             <p><Link to='/items'>Items</Link></p>
             <p><Link to='/maps'>Map</Link></p>
             <p><Link to='/attacks'>Attacks</Link></p>

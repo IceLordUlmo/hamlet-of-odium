@@ -3,14 +3,35 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_items():
-    demo = Item(
-        name = 'Seeded Item 1',
-        description = 'seed item 1 description',
+    demo1 = Item(
+        name = 'Rat Tail',
+        description = 'the tail of a rat',
         image_url = 'seedItem1.jpg',
         ramen_cost = 1
     )
+    demo2 = Item(
+        name = 'Iron Ore',
+        description = 'rock with iron embedded in it',
+        image_url = 'seedItem1.jpg',
+        ramen_cost = 23
+    )
+    demo3 = Item(
+        name = 'Coal',
+        description = 'a lump of coal, no presents for you',
+        image_url = 'seedItem1.jpg',
+        ramen_cost = 19
+    )
+    demo4 = Item(
+        name = 'Forbidden Snacks',
+        description = 'a pod of the tidal variety',
+        image_url = 'seedItem1.jpg',
+        ramen_cost = 9999
+    )
 
-    db.session.add(demo)
+    db.session.add(demo1)
+    db.session.add(demo2)
+    db.session.add(demo3)
+    db.session.add(demo4)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

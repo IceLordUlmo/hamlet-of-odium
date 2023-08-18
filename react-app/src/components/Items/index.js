@@ -36,8 +36,6 @@ const Items = () => {
             <p>
                 {inventoryList.map(item => <InventoryDisplay key={item.id} item={item} />)}
             </p>
-            <Link to='/'>Main</Link>
-            <button onClick={LogOut}>Log Out</button>
         </div>
     )
 }

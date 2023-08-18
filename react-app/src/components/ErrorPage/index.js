@@ -4,10 +4,8 @@ import './ErrorPage.css'
 const ErrorPage = () => {
     return (
         <div>
-            This is the Error Page.
-            <Link to='/login'>Login</Link>
-            <Link to='/signup'>Sign Up</Link>
-            <Link to='/'>Main</Link>
+            This is the Error Page. Please accept our most sincere apologies and return home.
+            <p><Link to='/'>Home</Link></p>
         </div>
     )
 }

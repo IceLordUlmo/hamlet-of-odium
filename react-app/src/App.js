@@ -7,7 +7,6 @@ import { authenticate } from "./store/session";
 import LeftNav from "./components/LeftNav";
 import Attacks from './components/Attacks'
 import Maps from "./components/Maps";
-import Main from './components/Main'
 import Items from './components/Items'
 import Location from './components/Location'
 import ProtectedRoute from './components/auth/ProtectedRoute'
