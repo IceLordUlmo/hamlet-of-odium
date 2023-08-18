@@ -81,6 +81,7 @@ export const dealDamageThunk = (damage) => async (dispatch) => {
     const data = await res.json();
     console.log('damage thunk data', data)
     dispatch(refresh(data.user_id))
+    dispatch(dealDamageAction(damage))
     return data;
 }
 
@@ -99,6 +100,11 @@ const fightsReducer = (state = initialState, action) => {
             newState = { ...state }
             newState.monsters = {}
             action.monsters.forEach((monster) => newState.monsters[monster.id] = monster)
+            return newState;
+        case DEAL_DAMAGE:
+            newState = { ...state }
+            newState.fight = { ...state.fight }
+            newState.fight.monster_hp -= action.damage
             return newState;
         case MONSTER_DEFEATED:
             state.defeated = { ...state.fight }

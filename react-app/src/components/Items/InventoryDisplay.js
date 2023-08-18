@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 
 const InventoryDisplay = ({ item }) => {
     const dispatch = useDispatch()
+    item = { ...item }
     function sell() {
         dispatch(itemActions.sellItemThunk(item.id))
     }

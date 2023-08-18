@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -20,14 +20,15 @@ function App() {
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
+  const user = useSelector(state => state.session.user)
   return (
     <>
       {isLoaded && (
         <div id='app-container'>
-          <div id='left-app'>
-            <ProtectedRoute component={LeftNav} />
-          </div>
+          {(user) ? <div id='left-app'>
+            <Route component={LeftNav} />
+          </div> : <div></div>}
+
           <div id='right-app'>
             <Switch>
               <Route path='/maps/:locationId'>

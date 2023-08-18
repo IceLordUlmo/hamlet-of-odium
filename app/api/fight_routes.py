@@ -10,7 +10,7 @@ fight_routes = Blueprint('fight_routes', __name__)
 def start_fight(monsterId):
     inFight = Fight.query.filter(Fight.user_id == current_user.id).first()
     if inFight:
-        return {'error': 'fight already exists'}
+        return inFight.to_dict()
     monster = Monster.query.filter(Monster.id == monsterId).first()
     fight = Fight(user_id = current_user.id, monster_id = monsterId, monster_hp = monster.max_hp)
     db.session.add(fight)
