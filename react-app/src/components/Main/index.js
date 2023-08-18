@@ -15,10 +15,7 @@ const Main = () => {
 
     return (
         <div>
-            User : {user.username}
-            Health : {user.current_hp} / {user.max_hp}
-            <Link to='/items'>Items</Link>
-            <button onClick={LogOut}>Log Out</button>
+            The Main now has little purpose
         </div>
     )
 }

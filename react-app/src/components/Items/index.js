@@ -29,9 +29,6 @@ const Items = () => {
 
     return (
         <div>
-            <p>User : {user.username}</p>
-            <p>Health : {user.current_hp} / {user.max_hp}</p>
-            <p>Ramen : {user.ramen}</p>
             <p>Items for Sale:</p>
             <p>
                 {itemsList.map(item => <ItemDisplay key={item.id} item={item} />)}
