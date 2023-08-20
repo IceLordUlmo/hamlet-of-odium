@@ -11,6 +11,7 @@ def start_fight(monsterId):
     inFight = Fight.query.filter(Fight.user_id == current_user.id).first()
     if inFight:
         return inFight.to_dict()
+    print('M O N S T E R I D', monsterId)
     monster = Monster.query.filter(Monster.id == monsterId).first()
     fight = Fight(user_id = current_user.id, monster_id = monsterId, monster_hp = monster.max_hp)
     db.session.add(fight)
@@ -43,7 +44,7 @@ def damage_monster():
         response['ramen'] = monster.ramen
         response['experience'] = monster.experience
         response['type'] = 'victory'
-        print('viccy roy ----------------------------------------------------(((((())))))')
+        
         current_user.ramen = current_user.ramen + monster.ramen
         current_user.experience = current_user.experience + monster.experience
         db.session.delete(fight)
