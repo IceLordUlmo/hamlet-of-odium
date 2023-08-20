@@ -13,7 +13,7 @@ const Encounter = () => {
     const fight = useSelector((store) => store.fights.fight)
     const monsters = useSelector((store) => store.fights.monsters)
     const history = useHistory()
-    const defeatedMonster = useSelector((store) => store.fights.defeated);
+    let defeatedMonster = useSelector((store) => store.fights.defeated);
     useEffect(() => {
         dispatch(attackActions.loadLearnedAttacksThunk()).then(
             dispatch(mapActions.loadMapThunk())).then(
@@ -21,7 +21,7 @@ const Encounter = () => {
                     dispatch(fightActions.loadFightThunk()))
     }, [dispatch])
     const encounterList = Object.values(encounters)
-    if (encounterList.length == 0) {
+    if (encounterList.length == 0 || fight == null) {
         return null
     }
 
