@@ -12,7 +12,7 @@ function LoginFormPage() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const history = useHistory()
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/maps" />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,8 +27,7 @@ function LoginFormPage() {
       email: 'demo@aa.io',
       password: 'password'
     }
-
-    return dispatch(login(demoUserInfo.email, demoUserInfo.password));
+    dispatch(login(demoUserInfo.email, demoUserInfo.password)).then(history.push('/maps'));
   }
 
   function SignUp() {

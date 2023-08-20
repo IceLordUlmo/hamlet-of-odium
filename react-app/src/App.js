@@ -29,7 +29,8 @@ function App() {
             <Route component={LeftNav} />
           </div> : <div></div>}
 
-          <div id='right-app'>
+
+          {(user) ? <div id='right-app'>
             <Switch>
               <Route path='/maps/:locationId'>
                 <Location />
@@ -42,17 +43,24 @@ function App() {
               <ProtectedRoute exact path="/items" component={Items} />
               <ProtectedRoute exact path="/attacks" component={Attacks} />
               <ProtectedRoute exact path="/maps" component={Maps} />
-              <Route path="/login" >
-                <LoginFormPage />
-              </Route>
-              <Route path="/signup">
-                <SignupFormPage />
-              </Route>
+              <ProtectedRoute exact path="/login" component={Maps} />
               <Route path="*" component={ErrorPage} />
             </Switch>
+          </div> : <div><Switch>
+            <Route path="/login" >
+              <LoginFormPage />
+            </Route>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route path="*" component={ErrorPage} />
+          </Switch>
           </div>
+          }
         </div>
-      )}
+
+      )
+      }
     </>
   );
 }
