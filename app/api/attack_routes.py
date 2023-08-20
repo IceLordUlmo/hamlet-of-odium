@@ -26,7 +26,8 @@ def learned_attacks():
     attacks = UserAttack.query.all()
     
     for attack in attacks:
-        attackList.append(attack.to_dict())
+        if attack.user_id == current_user.id:
+            attackList.append(attack.to_dict())
     
     return attackList
 
