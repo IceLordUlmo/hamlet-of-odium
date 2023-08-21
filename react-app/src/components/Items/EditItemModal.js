@@ -58,32 +58,32 @@ export default function EditItemModal({ inventoryItem }) {
     }, [name, description])
 
     return (
-        <div className='buy-item-modal-external'>
+        <div className='modal-external'>
             <h1>Name and describe this item:</h1>
-            {error.length ? error.map(e => <p key={error.indexOf(e)} className='buy-item-modal-error'>{e}</p>) : null}
+            {error.length ? error.map(e => <p key={error.indexOf(e)} id='error'>{e}</p>) : null}
             <form className='buy-item-form' onSubmit={handleSubmit} encType='multipart/form-data'>
-                <label htmlFor='buy-item-label'>
+                <label htmlFor='modal-label'>
                     Item Name
                 </label>
                 <input
-                    id='buy-item-text-field'
+                    id='modal-text-field'
                     type='text'
                     value={name}
                     required
                     onChange={(e) => setName(e.target.value)}
                     placeholder='Name this item' />
-                <label htmlFor='buy-item-label'>
+                <label htmlFor='modal-label'>
                     Item Description
                 </label>
                 <input
-                    id='buy-item-text-field'
+                    id='modal-text-field'
                     type='text'
                     value={description}
                     required
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder='Describe this item' />
 
-                <button id='buy-item-submit-button'
+                <button id='modal-submit-button'
                     type='submit'
                     disabled={disableButton}>
                     Submit Item Changes

@@ -1,0 +1,11 @@
+#items-sale-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#items-owned-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

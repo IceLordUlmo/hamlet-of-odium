@@ -21,13 +21,14 @@ const Items = () => {
 
     return (
         <div>
-            <p>Items for Sale:</p>
-            <p>
+            <h1>Items for Sale:</h1>
+            <div id='items-sale-grid'>
                 {itemsList.map(item => <ItemDisplay key={item.id} item={item} ramen={user.ramen} />)}
-            </p>
-            <p>
+            </div>
+            <h1>Items Owned:</h1>
+            <div id='items-owned-grid'>
                 {inventoryList.map(item => <InventoryDisplay key={item.id} inventoryItem={item} />)}
-            </p>
+            </div>
         </div>
     )
 }

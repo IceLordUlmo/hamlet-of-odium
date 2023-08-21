@@ -6,3 +6,11 @@
     align-items: center;
     text-align: center;
 }
+
+#location-description {
+    font-style: italic;
+}
+
+#location-description {
+    padding: 10px 0px 0px 0px;
+}

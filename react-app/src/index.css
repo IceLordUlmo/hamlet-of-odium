@@ -7,10 +7,6 @@ body {
     color: white;
 }
 
-#error {
-    color: red;
-}
-
 button {
     font-family: 'Courier New', arial;
 }
@@ -23,4 +19,16 @@ h3 {
 
 html {
     height: 100vh;
+}
+
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+.inaccessible {
+    color: yellow
 }
