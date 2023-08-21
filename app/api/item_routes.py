@@ -29,35 +29,63 @@ def inventory_list():
 
     return inventoryList
 
-@item_routes.route('/<int:itemId>/buy', methods=['POST'])
+@item_routes.route('/buy', methods=['POST'])
 @login_required
-def buy_item(itemId):
-    item = Item.query.filter(Item.id == itemId).first()
-
+def buy_item():
     form = ItemForm()
 
     quantity = form['quantity'].data
 
+    itemId = form['itemId'].data
+    name = form['name'].data
+    description = form['description'].data
+    item = Item.query.filter(Item.id == itemId).first()
+
     if current_user.ramen >= (item.ramen_cost * quantity):
         current_user.ramen = current_user.ramen - (item.ramen_cost * quantity)
 
-        inventoryEntry = InventoryItem.query.filter(InventoryItem.name == item.name).first()
-
-        if inventoryEntry:
-            if inventoryEntry.quantity + quantity > -1:
-                inventoryEntry.quantity = inventoryEntry.quantity + quantity
-                if inventoryEntry.quantity == 0:
-                    db.session.delete(inventoryEntry)
-                    db.session.commit()
-                    return { 'result' : 'Item entry removed' }
-            else:
-                response = { 'error' : "Cannot change quantity in that way"}
-                return response
-        else:
-            inventoryEntry = InventoryItem(name = item.name, description = item.description, image_url = item.image_url, quantity = quantity, user_id = current_user.id)
-            db.session.add(inventoryEntry)
+        # if inventoryEntry:
+        #     if inventoryEntry.quantity + quantity > -1:
+        #         inventoryEntry.quantity = inventoryEntry.quantity + quantity
+        #         if inventoryEntry.quantity == 0:
+        #             db.session.delete(inventoryEntry)
+        #             db.session.commit()
+        #             return { 'result' : 'Item entry removed' }
+        #     else:
+        #         response = { 'error' : "Cannot change quantity in that way"}
+        #         return response
+       
+        inventoryEntry = InventoryItem(name = name, description = description, image_url = item.image_url, quantity = quantity, user_id = current_user.id)
+        db.session.add(inventoryEntry)
         db.session.commit()
         response = inventoryEntry.to_dict()
     else:
         response = { 'error' : "Cannot afford"}
     return response
+@item_routes.route('/edit', methods=['PUT'])
+@login_required
+def edit_item(itemId):
+    form = ItemForm()
+
+    # quantity = form['quantity'].data
+
+    inventoryItemId = form['inventoryItemId'].data
+    name = form['name'].data
+    description = form['description'].data
+    inventoryItem = InventoryItem.query.filter(Item.id == itemId).first()
+
+    inventoryItem.name = name
+    inventoryItem.description = description
+
+    db.session.commit()
+    response = inventoryItem.to_dict()
+    
+    return response
+@item_routes.route('/sell', methods=['PUT'])
+@login_required
+def sell_item(itemId):
+    return
+@item_routes.route('/drop/<int:inventoryItemId>', methods=['DELETE'])
+@login_required
+def drop_item(inventoryItemId):
+    return

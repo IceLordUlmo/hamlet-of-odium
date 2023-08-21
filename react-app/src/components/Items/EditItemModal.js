@@ -1,47 +1,47 @@
-import './BuyAttackModal.css'
-import { useDispatch } from 'react-redux'
+import './EditItemModal.css'
+import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from '../../context/Modal'
-import { useState, useEffect } from 'react'
-import * as attackActions from '../../store/attacks.js'
+import { useEffect, useState } from 'react'
+import * as itemActions from '../../store/items.js'
 import { useHistory } from 'react-router-dom'
 
-export default function AttackFormModal({ attack }) {
+export default function EditItemModal({ inventoryItem }) {
     const dispatch = useDispatch()
     const history = useHistory()
     const { closeModal } = useModal()
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-
+    const [name, setName] = useState(inventoryItem.name)
+    const [description, setDescription] = useState(inventoryItem.description)
     const [error, setError] = useState([]);
     const [disableButton, setDisableButton] = useState(true);
-
+    const user = useSelector((state) => state.session.user)
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-
         errorCheck()
         if (error.length > 0) {
-
             return;
         }
 
         const form = new FormData();
         form.append('name', name);
         form.append('description', description)
-        form.append('attackId', attack.id)
+        form.append('inventoryItemId', inventoryItem.id)
         //form.append('damage')
 
-        dispatch(attackActions.trainAttackThunk(form)).then((responseData) => {
+        dispatch(itemActions.editItemThunk(form)).then((responseData) => {
             if (responseData.error) {
                 setError(responseData.error)
             } else {
-                history.push('/attacks')
+                history.push('/items')
                 closeModal();
             }
         })
     }
+
     function errorCheck() {
         const newErrors = []
+        let max = Math.floor(user.ramen / item.ramen_cost)
+        if (max > 1000) max = 1000;
         if (name.length < 1 || name.length > 255) newErrors.push("Name must be between 1 and 255 characters");
         if (description.length < 1 || description.length > 255) newErrors.push("Description must be between 1 and 255 characters");
 
@@ -58,34 +58,35 @@ export default function AttackFormModal({ attack }) {
     }, [name, description])
 
     return (
-        <div className='buy-attack-modal-external'>
-            <h1>Name and describe this attack:</h1>
-            {error.length ? error.map(e => <p className='buy-attack-modal-error'>{e}</p>) : null}
-            <form className='buy-attack-form' onSubmit={handleSubmit} encType='multipart/form-data'>
-                <label htmlFor='buy-attack-label'>
+        <div className='buy-item-modal-external'>
+            <h1>Name and describe this item:</h1>
+            {error.length ? error.map(e => <p className='buy-item-modal-error'>{e}</p>) : null}
+            <form className='buy-item-form' onSubmit={handleSubmit} encType='multipart/form-data'>
+                <label htmlFor='buy-item-label'>
                     Attack Name
                 </label>
                 <input
-                    id='buy-attack-text-field'
+                    id='buy-item-text-field'
                     type='text'
                     value={name}
                     required
                     onChange={(e) => setName(e.target.value)}
-                    placeholder='Name this attack' />
-                <label htmlFor='buy-attack-label'>
+                    placeholder='Name this item' />
+                <label htmlFor='buy-item-label'>
                     Attack Description
                 </label>
                 <input
-                    id='buy-attack-text-field'
+                    id='buy-item-text-field'
                     type='text'
                     value={description}
                     required
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder='Describe this attack' />
-                <button id='buy-attack-submit-button'
+                    placeholder='Describe this item' />
+
+                <button id='buy-item-submit-button'
                     type='submit'
                     disabled={disableButton}>
-                    Create New Attack
+                    Submit Item Changes
                 </button>
             </form>
         </div>

@@ -1,4 +1,4 @@
-import './BuyAttackModal.js'
+import './EditAttackModal.css'
 import { useDispatch } from 'react-redux'
 import { useModal } from '../../context/Modal'
 import { useState, useEffect } from 'react'

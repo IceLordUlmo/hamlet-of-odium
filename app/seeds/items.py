@@ -22,8 +22,8 @@ def seed_items():
         ramen_cost = 19
     )
     demo4 = Item(
-        name = 'Forbidden Snacks',
-        description = 'a pod of the tidal variety',
+        name = 'Diamond-encrusted Snacks',
+        description = 'expensive is the point',
         image_url = 'seedItem1.jpg',
         ramen_cost = 9999
     )

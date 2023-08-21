@@ -5,6 +5,7 @@ const InventoryDisplay = ({ item }) => {
     const dispatch = useDispatch()
     item = { ...item }
     function sell() {
+        console.log(item)
         dispatch(itemActions.sellItemThunk(item.id))
     }
 
