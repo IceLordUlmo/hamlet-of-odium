@@ -24,3 +24,13 @@ h3 {
 html {
     height: 100vh;
 }
+
+/* unvisited link */
+a:link {
+    color: blue;
+}
+
+/* visited link */
+a:visited {
+    color: blue;
+}
