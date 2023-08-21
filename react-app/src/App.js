@@ -32,7 +32,7 @@ function App() {
 
         <div id='app-container'>
 
-          <div id='left-dummy-app'><div id='dummy'></div></div>
+          {user ? <div id='left-dummy-app'><div id='dummy'></div></div> : null}
 
           {(user) ? <div id='right-app'>
             <Switch>
@@ -53,7 +53,7 @@ function App() {
               <ProtectedRoute exact path="/leaderboard" component={Leaderboard} />
               <Route path="*" component={ErrorPage} />
             </Switch>
-          </div> : <div><Switch>
+          </div> : <div id='right-app-register'><Switch>
             <Route path="/login" >
               <LoginFormPage />
             </Route>
