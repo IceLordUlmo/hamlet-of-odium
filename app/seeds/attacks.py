@@ -3,15 +3,39 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_attacks():
-    demo = Attack(
-        name='Attackname',
-        image_url = 'nullSeedData.jpg',
-        description = 'Basic Seed Attack',
+    demo1 = Attack(
+        name='Basic Attack',
+        image_url = 'nullSeedData1.jpg',
+        description = 'Punch',
         ramen_cost = 2,
         damage = 1
     )
+    demo2 = Attack(
+        name='Energy Blast',
+        image_url = 'nullSeedData2.jpg',
+        description = 'Basic Seed Attack',
+        ramen_cost = 22,
+        damage = 4
+    )
+    demo3 = Attack(
+        name='Attackname',
+        image_url = 'nullSeedData3.jpg',
+        description = 'Basic Seed Attack',
+        ramen_cost = 403,
+        damage = 16
+    )
+    demo4 = Attack(
+        name='Attackname',
+        image_url = 'nullSeedData4.jpg',
+        description = 'Basic Seed Attack',
+        ramen_cost = 7580,
+        damage = 301
+    )
     
-    db.session.add(demo)
+    db.session.add(demo1)
+    db.session.add(demo2)
+    db.session.add(demo3)
+    db.session.add(demo4)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

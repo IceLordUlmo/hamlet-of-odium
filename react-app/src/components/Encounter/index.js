@@ -35,6 +35,9 @@ const Encounter = () => {
         }
     }
 
+    if (fight.status == 'no fight') {
+        return null
+    }
     //redirect to the appropriate encounter if we try to get into it in the wrong place
     if (encounters[encounterId].fight_monster_id != fight.monster_id) {
         const destinationEncounterId = encounterList.filter(encounter => (encounter.fight_monster_id === fight.monster_id))[0].id

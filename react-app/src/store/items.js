@@ -43,33 +43,47 @@ export const loadInventoryThunk = () => async (dispatch) => {
     return dispatch(loadInventoryAction(data));
 }
 
-export const buyItemThunk = itemId => async (dispatch) => {
-    const res = await fetch(`api/items/${itemId}/buy`, {
+export const buyItemThunk = (formData) => async (dispatch) => {
+    const res = await fetch(`api/items/buy`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            quantity: 1
-        })
+        body: formData
     })
+
     const data = await res.json();
     dispatch(refresh(data.user_id))
     return dispatch(loadInventoryThunk())
 }
 
-export const sellItemThunk = itemId => async (dispatch) => {
-    const res = await fetch(`api/items/${itemId}/buy`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            quantity: -1
-        })
+export const editItemThunk = (formData) => async (dispatch) => {
+    const res = await fetch(`api/items/edit`, {
+        method: "PUT",
+        body: formData
     })
+
     const data = await res.json();
     dispatch(refresh(data.user_id))
+    return dispatch(loadInventoryThunk())
+}
+
+
+export const sellItemThunk = (formData) => async (dispatch) => {
+    const res = await fetch(`api/items/sell`, {
+        method: "POST",
+        body: formData
+    })
+
+    const data = await res.json();
+    dispatch(refresh(data.user_id))
+    return dispatch(loadInventoryThunk())
+}
+
+export const dropItemThunk = (formData) => async (dispatch) => {
+    const res = await fetch('api/items/drop', {
+        method: "DELETE",
+        body: formData
+    })
+
+    const data = await res.json();
     return dispatch(loadInventoryThunk())
 }
 

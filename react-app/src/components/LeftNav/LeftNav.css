@@ -1,4 +1,18 @@
 #left-nav-container {
     width: 225px;
-    height: 100%;
+    height: 98%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#left-nav-logo {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#left-nav-content {
+    display: flex;
+    justify-content: space-around;
 }

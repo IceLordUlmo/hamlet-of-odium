@@ -44,6 +44,7 @@ function App() {
               <ProtectedRoute exact path="/attacks" component={Attacks} />
               <ProtectedRoute exact path="/maps" component={Maps} />
               <ProtectedRoute exact path="/login" component={Maps} />
+              <ProtectedRoute exact path="/signup" component={Maps} />
               <Route path="*" component={ErrorPage} />
             </Switch>
           </div> : <div><Switch>

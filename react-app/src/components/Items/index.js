@@ -26,7 +26,7 @@ const Items = () => {
                 {itemsList.map(item => <ItemDisplay key={item.id} item={item} ramen={user.ramen} />)}
             </p>
             <p>
-                {inventoryList.map(item => <InventoryDisplay key={item.id} item={item} />)}
+                {inventoryList.map(item => <InventoryDisplay key={item.id} inventoryItem={item} />)}
             </p>
         </div>
     )

@@ -84,4 +84,4 @@ def delete_user_attack():
 
     db.session.delete(userAttack)
     db.session.commit()
-    return {'status': 'Deletion successful.'}
+    return {'status': 'Attack deletion successful.'}

@@ -13,6 +13,9 @@ const TrainableAttack = ({ attack, ramen }) => {
                 Price: <Cost cost={attack.ramen_cost} />
             </p>
             <p>
+                Damage: {attack.damage}
+            </p>
+            <p>
                 <OpenModalButton
                     modalComponent={<BuyAttackModal attack={attack} />}
                     className='attack-modal-button'
