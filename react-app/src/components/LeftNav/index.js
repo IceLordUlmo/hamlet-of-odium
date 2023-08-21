@@ -21,18 +21,26 @@ const LeftNav = () => {
 
     return (
         <div id='left-nav-container'>
-            <div id='left-nav-logo'>
-                <img src={Logo}></img>
+            <div>
+                <div id='left-nav-logo'>
+                    <img src={Logo}></img>
+                </div>
+                <div id='left-nav-content'>
+                    <div>
+                        <p>User: {user.username}</p>
+                        <p>Health: {user.current_hp} / {user.max_hp}</p>
+                        <p>Ramen: <Cost cost={user.ramen} /></p>
+                        <p>Experience: {user.experience}</p>
+                        <p>Level: {user.level}</p>
+                        <p><Link to='/items'>Items</Link></p>
+                        <p><Link to='/maps'>Map</Link></p>
+                        <p><Link to='/attacks'>Attacks</Link></p>
+                    </div>
+                </div>
             </div>
-            <p>User: {user.username}</p>
-            <p>Health: {user.current_hp} / {user.max_hp}</p>
-            <p>Ramen: <Cost cost={user.ramen} /></p>
-            <p>Experience: {user.experience}</p>
-            <p>Level: {user.level}</p>
-            <p><Link to='/items'>Items</Link></p>
-            <p><Link to='/maps'>Map</Link></p>
-            <p><Link to='/attacks'>Attacks</Link></p>
-            <button onClick={LogOut}>Log Out</button>
+            <div id='left-nav-logout'>
+                <button onClick={LogOut}>Log Out</button>
+            </div>
         </div>
     )
 }
