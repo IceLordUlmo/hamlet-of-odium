@@ -30,7 +30,7 @@ const Attacks = () => {
             </p>
             <h2>Attacks You Know:</h2>
             <p>
-                {learnedList.map(attack => <LearnedAttack key={attack.id} attack={attack} />)}
+                {learnedList.map(userAttack => <LearnedAttack key={userAttack.id} userAttack={userAttack} />)}
             </p>
         </div>
     )
