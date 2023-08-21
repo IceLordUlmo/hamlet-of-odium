@@ -1,4 +1,8 @@
 #location-for-grid {
-    padding: 30px;
+    margin: 10px;
+    padding: 5px;
     width: 300px;
+    border: 2px solid gray;
+    align-items: center;
+    text-align: center;
 }

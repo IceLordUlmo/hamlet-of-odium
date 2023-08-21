@@ -14,10 +14,10 @@ const Encounter = ({ encounter }) => {
         history.push(`/encounters/${encounter.id}`)
     }
     return (
-        <a>
-            <p>Encounter: <button onClick={MakeItSo}>{encounter.name}</button></p>
-            <p>Description: {encounter.description}</p>
-        </a>
+        <div id='encounter-for-grid'>
+            <p><button id='location-button' onClick={MakeItSo}>{encounter.name}</button></p>
+            <p>{encounter.description}</p>
+        </div>
     )
 }
 

@@ -32,9 +32,10 @@ const LeftNav = () => {
                         <p>Ramen: <Cost cost={user.ramen} /></p>
                         <p>Experience: {user.experience} / 10</p>
                         <p>Level: {user.level}</p>
-                        <p><Link to='/items'>Items</Link></p>
                         <p><Link to='/maps'>Map</Link></p>
+                        <p><Link to='/items'>Items</Link></p>
                         <p><Link to='/attacks'>Attacks</Link></p>
+                        <p><Link to='/howtoplay'>How To Play</Link></p>
                     </div>
                 </div>
             </div>

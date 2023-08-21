@@ -15,6 +15,12 @@ button {
     font-family: 'Courier New', arial;
 }
 
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
 html {
     height: 100vh;
 }

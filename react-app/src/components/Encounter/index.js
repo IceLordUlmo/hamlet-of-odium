@@ -45,11 +45,16 @@ const Encounter = () => {
     }
 
     return (<div>
-        name: {encounters[encounterId].name}
-        <p>hp: {fight.monster_hp}</p>
-        <p>
-            <button onClick={attack}>Whack it for 1 damage</button>
-        </p>
+        <h1> {encounters[encounterId].name} </h1>
+        <div id='encounter-monster-wrapper'>
+            <div id='encounter-monster-text'>
+                <h3>You are in combat with a: <p></p>{monsters[fight.monster_id].name}</h3>
+                <p>HP: {fight.monster_hp} / {monsters[fight.monster_id].max_hp}</p>
+                <p>
+                    <button onClick={attack}>Whack it for 1 damage</button>
+                </p>
+            </div>
+        </div>
     </div>)
 }
 

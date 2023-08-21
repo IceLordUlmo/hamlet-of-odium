@@ -1,0 +1,14 @@
+#location-text {
+    text-align: center;
+}
+
+#location-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#location-button {
+    width: 100%;
+    font-size: 24px;
+}

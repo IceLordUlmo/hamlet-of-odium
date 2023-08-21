@@ -14,6 +14,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute'
 import Victory from './components/Encounter/Victory'
 import ErrorPage from './components/ErrorPage'
 import Leaderboard from './components/Leaderboard'
+import HowToPlay from './components/HowToPlay'
 import './App.css'
 function App() {
   const dispatch = useDispatch();
@@ -45,7 +46,8 @@ function App() {
               <ProtectedRoute exact path="/attacks" component={Attacks} />
               <ProtectedRoute exact path="/maps" component={Maps} />
               <ProtectedRoute exact path="/login" component={Maps} />
-              <ProtectedRoute exact path="/signup" component={Maps} />
+              <ProtectedRoute exact path="/signup" component={HowToPlay} />
+              <ProtectedRoute exact path="/howtoplay" component={HowToPlay} />
               <ProtectedRoute exact path="/leaderboard" component={Leaderboard} />
               <Route path="*" component={ErrorPage} />
             </Switch>
