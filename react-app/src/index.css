@@ -1,8 +1,14 @@
 /* TODO Add site wide styles */
 body {
     font-family: 'Courier New', arial;
+    margin: 0px;
+    height: 100vh;
 }
 
 button {
     font-family: 'Courier New', arial;
+}
+
+html {
+    height: 100vh;
 }

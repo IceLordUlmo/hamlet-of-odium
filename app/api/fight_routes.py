@@ -47,6 +47,9 @@ def damage_monster():
         
         current_user.ramen = current_user.ramen + monster.ramen
         current_user.experience = current_user.experience + monster.experience
+        newLevels = current_user.experience // 10
+        current_user.experience = current_user.experience - (newLevels * 10)
+        current_user.level = current_user.level + newLevels
         db.session.delete(fight)
         db.session.commit()
         return response
