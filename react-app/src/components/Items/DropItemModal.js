@@ -17,8 +17,12 @@ export default function DeleteItemModal({ inventoryItem }) {
         <div>
             <div> Are you sure you want to drop these {inventoryItem.quantity} {inventoryItem.name}s?</div>
             <div>
-                <button onClick={deleteItem}>Drop them!</button>
-                <button onClick={closeModal}>On second thought, let's keep them.</button>
+                <div id='drop-button'>
+                    <button onClick={deleteItem}>Drop them!</button>
+                </div>
+                <div id='drop-button'>
+                    <button onClick={closeModal}>On second thought, let's keep them.</button>
+                </div>
             </div>
         </div>
     )
