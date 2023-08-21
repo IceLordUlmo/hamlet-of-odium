@@ -1,0 +1,17 @@
+#victory-rewards {
+    border: yellow 4px solid;
+    border-radius: 15px;
+    width: 30%;
+}
+
+#victory-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#rewards-styling {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

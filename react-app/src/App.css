@@ -5,8 +5,27 @@
 
 #left-app {
     margin: 10px;
+    left: 0px;
+    top: 0px;
+    position: fixed;
+    height: 100vh;
+}
+
+#left-dummy-app {
+    margin: 0px;
+    left: 0px;
+    width: 225px;
 }
 
 #right-app {
     width: 100%;
+}
+
+#right-app-register {
+    width: 100%;
+    height: 100%;
+}
+
+#dummy {
+    width: 225px;
 }

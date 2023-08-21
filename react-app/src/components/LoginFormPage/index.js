@@ -18,6 +18,10 @@ function LoginFormPage() {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
+      data[0] = (data[0].split(':'))[1]
+      if (data[1]) {
+        data[1] = (data[1].split(':'))[1]
+      }
       setErrors(data);
     }
   };
@@ -35,44 +39,51 @@ function LoginFormPage() {
   }
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <p>
-          <button type="submit">Log In</button>
-        </p>
-      </form>
+    <div id='login-wrapper'>
+      <div>
+        <div id='login-container'>
+          <h1>Hamlet of Odium</h1>
+          <h2>Log In</h2>
+          <form onSubmit={handleSubmit}>
+            <ul>
+              {errors.map((error, idx) => (
+                <li id='error' key={idx}>{error}</li>
+              ))}
+            </ul>
+            <label>
+              Email
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Password
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </label>
+            <div id='login-button'>
+              <button id='login-button' type="submit">Log In</button>
+            </div>
+          </form>
 
-      <p>
-        <button onClick={LogInDemo}>Log In User 1</button>
-      </p>
-      <p>
-        <button onClick={SignUp}>Go To Sign Up Page</button>
-      </p>
-    </>
+
+
+        </div>
+        <div id='login-buttons'>
+          <button id='login-buttons' onClick={SignUp}>Sign Up</button>
+
+          <button id='login-buttons' onClick={LogInDemo}>Log In Demo User</button>
+
+        </div>
+      </div>
+    </div>
   );
 }
 

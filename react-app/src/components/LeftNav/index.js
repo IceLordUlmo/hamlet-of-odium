@@ -27,15 +27,17 @@ const LeftNav = () => {
                 </div>
                 <div id='left-nav-content'>
                     <div>
-                        <p>User: {user.username}</p>
-                        <p>Health: {user.current_hp} / {user.max_hp}</p>
-                        <p>Ramen: <Cost cost={user.ramen} /></p>
-                        <p>Experience: {user.experience} / 10</p>
-                        <p>Level: {user.level}</p>
-                        <p><Link to='/maps'>Map</Link></p>
-                        <p><Link to='/items'>Items</Link></p>
-                        <p><Link to='/attacks'>Attacks</Link></p>
-                        <p><Link to='/howtoplay'>How To Play</Link></p>
+                        <div id='user-stats'>
+                            <p>User: {user.username}</p>
+                            <p>Health: {user.current_hp} / {user.max_hp}</p>
+                            <p>Ramen: <Cost cost={user.ramen} /></p>
+                            <p>Experience: {user.experience} / 10</p>
+                            <p>Level: {user.level}</p>
+                        </div>
+                        <p><Link id='nav-link' to='/maps'>Map</Link></p>
+                        <p><Link id='nav-link' to='/items'>Items</Link></p>
+                        <p><Link id='nav-link' to='/attacks'>Attacks</Link></p>
+                        <p><Link id='nav-link' to='/howtoplay'>How To Play</Link></p>
                     </div>
                 </div>
             </div>

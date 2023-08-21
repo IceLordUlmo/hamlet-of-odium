@@ -13,21 +13,21 @@ def seed_attacks():
     demo2 = Attack(
         name='Energy Blast',
         image_url = 'nullSeedData2.jpg',
-        description = 'Basic Seed Attack',
+        description = 'Magical Attack',
         ramen_cost = 22,
         damage = 4
     )
     demo3 = Attack(
-        name='Attackname',
+        name='Hammer Time',
         image_url = 'nullSeedData3.jpg',
-        description = 'Basic Seed Attack',
+        description = 'Cannot touch this.',
         ramen_cost = 403,
         damage = 16
     )
     demo4 = Attack(
-        name='Attackname',
+        name='Final Getsuga Tensho',
         image_url = 'nullSeedData4.jpg',
-        description = 'Basic Seed Attack',
+        description = 'An ultimate attack.',
         ramen_cost = 7580,
         damage = 301
     )
