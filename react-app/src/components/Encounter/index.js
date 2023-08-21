@@ -24,7 +24,7 @@ const Encounter = () => {
                         dispatch(fightActions.loadFightThunk()))
     }, [dispatch])
     const encounterList = Object.values(encounters)
-    if (encounterList.length == 0 || fight == null) {
+    if (encounterList.length == 0 || fight == null || Object.values(monsters).length == 0) {
         return null
     }
 

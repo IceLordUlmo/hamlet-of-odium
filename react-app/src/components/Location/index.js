@@ -26,9 +26,9 @@ const Location = () => {
     return (
         <div>
             <h1 id='location-text'>{locationHere.name}</h1>
-            <h3 id='location-text'> {locationHere.description}</h3>
+            <h2 id='location-text'> {locationHere.description}</h2>
 
-            <p>Encounters:</p>
+            <h3>Encounters:</h3>
             <p id='location-grid'>
                 {encountersList.map(encounter => <Encounter key={encounter.id} encounter={encounter} />)}
             </p>
