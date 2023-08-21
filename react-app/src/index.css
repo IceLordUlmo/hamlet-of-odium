@@ -28,3 +28,7 @@ a:link {
 a:visited {
     color: blue;
 }
+
+.inaccessible {
+    color: yellow
+}
