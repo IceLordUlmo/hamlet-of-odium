@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
+import './Victory.css'
 const Victory = () => {
     const fight = useSelector((store) => store.fights.defeated)
     const monsters = useSelector((store) => store.fights.monsters)

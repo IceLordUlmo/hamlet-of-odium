@@ -42,8 +42,9 @@ export default function AttackEditFormModal({ userAttack }) {
         if (!name.length || name.length > 255) newErrors.push("Name must be between 1 and 255 characters");
         if (!description.length || description.length > 255) newErrors.push("Description must be between 1 and 255 characters");
 
+        setError(newErrors);
+
         if (newErrors.length) {
-            setError(newErrors);
             setDisableButton(true);
         };
     }
