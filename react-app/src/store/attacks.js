@@ -44,15 +44,10 @@ export const loadLearnedAttacksThunk = () => async (dispatch) => {
     return dispatch(loadLearnedAction(data));
 }
 
-export const trainAttackThunk = (attackId) => async (dispatch) => {
+export const trainAttackThunk = (formData) => async (dispatch) => {
     const res = await fetch(`api/attacks/train`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            attackId
-        })
+        body: formData
     })
 
     const data = await res.json();
@@ -60,6 +55,26 @@ export const trainAttackThunk = (attackId) => async (dispatch) => {
     return dispatch(loadLearnedAttacksThunk())
 }
 
+export const editAttackThunk = (formData) => async (dispatch) => {
+    const res = await fetch(`api/attacks/train`, {
+        method: "PUT",
+        body: formData
+    })
+
+    const data = await res.json();
+    dispatch(refresh(data.user_id));
+    return dispatch(loadLearnedAttacksThunk())
+}
+
+export const forgetThunk = (formData) => async (dispatch) => {
+    const res = await fetch(`api/attacks/train`, {
+        method: "DELETE",
+        body: formData
+    })
+
+    const data = await res.json();
+    dispatch(loadLearnedAttacksThunk())
+}
 // initial state
 const initialState = { trainable: {}, learned: {} };
 // reducer
