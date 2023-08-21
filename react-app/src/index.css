@@ -3,6 +3,8 @@ body {
     font-family: 'Courier New', arial;
     margin: 0px;
     height: 100vh;
+    background-color: black;
+    color: white;
 }
 
 button {
