@@ -1,0 +1,10 @@
+#map-text {
+    text-align: center;
+    font-size: 70px;
+}
+
+#map-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,9 @@
+#encounter-monster-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+#encounter-monster-text {
+    align-items: left;
+    width: fit-content;
+}

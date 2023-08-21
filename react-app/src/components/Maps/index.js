@@ -27,11 +27,12 @@ const Map = () => {
 
     return (
         <div>
-            <p>Map</p>
+            <h1 id='map-text'>Map</h1>
+            <div id='map-grid'>
 
-            <p>
-                {locationsList.map(location => <MapLocation key={location.id} location={location} />)}
-            </p>
+                {locationsList.map(location => <MapLocation key={location.id} location={location} level={user.level} />)}
+
+            </div>
         </div>
     )
 }

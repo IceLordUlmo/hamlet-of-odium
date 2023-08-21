@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import Encounter from './LocationEncounter'
 import { useEffect } from 'react'
 import * as mapActions from '../../store/maps'
-
+import './Location.css'
 const Location = () => {
     let { locationId } = useParams()
     const encounters = useSelector((state) => state.maps.encounters)
@@ -25,11 +25,11 @@ const Location = () => {
     console.log('encounters ', Object.values(encounters)[0])
     return (
         <div>
-            <p>This Location: {locationHere.name}</p>
-            <p>This location's description: {locationHere.description}</p>
+            <h1 id='location-text'>{locationHere.name}</h1>
+            <h3 id='location-text'> {locationHere.description}</h3>
 
             <p>Encounters:</p>
-            <p>
+            <p id='location-grid'>
                 {encountersList.map(encounter => <Encounter key={encounter.id} encounter={encounter} />)}
             </p>
         </div>
