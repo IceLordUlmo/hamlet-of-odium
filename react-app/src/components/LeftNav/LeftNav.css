@@ -2,3 +2,9 @@
     width: 225px;
     height: 100%;
 }
+
+#left-nav-logo {
+    display: flex;
+    justify-content: space-around;
+
+}

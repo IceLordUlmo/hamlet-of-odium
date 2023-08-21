@@ -5,7 +5,7 @@ import './LeftNav.css'
 import { Link } from 'react-router-dom'
 import Cost from '../Cost'
 import { Redirect, useHistory } from 'react-router-dom';
-
+import Logo from './logo.png'
 const LeftNav = () => {
     const user = useSelector((state) => state.session.user)
     const dispatch = useDispatch();
@@ -21,6 +21,9 @@ const LeftNav = () => {
 
     return (
         <div id='left-nav-container'>
+            <div id='left-nav-logo'>
+                <img src={Logo}></img>
+            </div>
             <p>User: {user.username}</p>
             <p>Health: {user.current_hp} / {user.max_hp}</p>
             <p>Ramen: <Cost cost={user.ramen} /></p>
