@@ -65,7 +65,7 @@ export default function BuyItemModal({ item }) {
             {error.length ? error.map(e => <p className='buy-item-modal-error'>{e}</p>) : null}
             <form className='buy-item-form' onSubmit={handleSubmit} encType='multipart/form-data'>
                 <label htmlFor='buy-item-label'>
-                    Attack Name
+                    Item Name
                 </label>
                 <input
                     id='buy-item-text-field'
@@ -75,7 +75,7 @@ export default function BuyItemModal({ item }) {
                     onChange={(e) => setName(e.target.value)}
                     placeholder='Name this item' />
                 <label htmlFor='buy-item-label'>
-                    Attack Description
+                    Item Description
                 </label>
                 <input
                     id='buy-item-text-field'

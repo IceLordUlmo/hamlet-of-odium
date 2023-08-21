@@ -1,16 +1,23 @@
-import * as itemActions from '../../store/items'
-import { useDispatch } from 'react-redux'
-
-const InventoryDisplay = ({ item }) => {
-    const dispatch = useDispatch()
-    item = { ...item }
-    function sell() {
-        console.log(item)
-        dispatch(itemActions.sellItemThunk(item.id))
-    }
+import EditItemModal from './EditItemModal'
+import DropItemModal from './DropItemModal'
+import OpenModalButton from '../OpenModalButton'
+const InventoryDisplay = ({ inventoryItem }) => {
+    inventoryItem = { ...inventoryItem }
 
     return (
-        <div>{item.name} Quantity in inventory: {item.quantity} <p><button onClick={sell}>Sell</button></p></div>
+        <div>{inventoryItem.name} Quantity in inventory: {inventoryItem.quantity}
+            <p><OpenModalButton
+                modalComponent={<EditItemModal inventoryItem={inventoryItem} />}
+                className='item-modal-button'
+                buttonText='Edit this Item'
+
+            />
+                <OpenModalButton
+                    modalComponent={<DropItemModal inventoryItem={inventoryItem} />}
+                    className='item-modal-button'
+                    buttonText='Drop Item(s)'
+
+                /></p></div>
     )
 }
 

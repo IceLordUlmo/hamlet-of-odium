@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, Item, InventoryItem, db
 from flask_login import current_user, login_required
-from app.forms import ItemForm
+from app.forms import ItemForm, ItemUpdateForm, ItemDeleteForm
 
 item_routes = Blueprint('item', __name__)
 
@@ -64,15 +64,15 @@ def buy_item():
     return response
 @item_routes.route('/edit', methods=['PUT'])
 @login_required
-def edit_item(itemId):
-    form = ItemForm()
+def edit_item():
+    form = ItemUpdateForm()
 
     # quantity = form['quantity'].data
 
     inventoryItemId = form['inventoryItemId'].data
     name = form['name'].data
     description = form['description'].data
-    inventoryItem = InventoryItem.query.filter(Item.id == itemId).first()
+    inventoryItem = InventoryItem.query.filter(InventoryItem.id == inventoryItemId).first()
 
     inventoryItem.name = name
     inventoryItem.description = description
@@ -83,9 +83,14 @@ def edit_item(itemId):
     return response
 @item_routes.route('/sell', methods=['PUT'])
 @login_required
-def sell_item(itemId):
+def sell_item():
     return
-@item_routes.route('/drop/<int:inventoryItemId>', methods=['DELETE'])
+@item_routes.route('/drop', methods=['DELETE'])
 @login_required
-def drop_item(inventoryItemId):
-    return
+def drop_item():
+    form = ItemDeleteForm()
+    inventoryItemId = form['inventoryItemId'].data
+    inventoryItem = InventoryItem.query.filter(InventoryItem.id == inventoryItemId).first()
+    db.session.delete(inventoryItem)
+    db.session.commit()
+    return {'status': 'Item drop successful.'}

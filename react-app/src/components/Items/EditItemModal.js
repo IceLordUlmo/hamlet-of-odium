@@ -40,7 +40,7 @@ export default function EditItemModal({ inventoryItem }) {
 
     function errorCheck() {
         const newErrors = []
-        let max = Math.floor(user.ramen / item.ramen_cost)
+        let max = Math.floor(user.ramen / inventoryItem.ramen_cost)
         if (max > 1000) max = 1000;
         if (name.length < 1 || name.length > 255) newErrors.push("Name must be between 1 and 255 characters");
         if (description.length < 1 || description.length > 255) newErrors.push("Description must be between 1 and 255 characters");
@@ -60,10 +60,10 @@ export default function EditItemModal({ inventoryItem }) {
     return (
         <div className='buy-item-modal-external'>
             <h1>Name and describe this item:</h1>
-            {error.length ? error.map(e => <p className='buy-item-modal-error'>{e}</p>) : null}
+            {error.length ? error.map(e => <p key={error.indexOf(e)} className='buy-item-modal-error'>{e}</p>) : null}
             <form className='buy-item-form' onSubmit={handleSubmit} encType='multipart/form-data'>
                 <label htmlFor='buy-item-label'>
-                    Attack Name
+                    Item Name
                 </label>
                 <input
                     id='buy-item-text-field'
@@ -73,7 +73,7 @@ export default function EditItemModal({ inventoryItem }) {
                     onChange={(e) => setName(e.target.value)}
                     placeholder='Name this item' />
                 <label htmlFor='buy-item-label'>
-                    Attack Description
+                    Item Description
                 </label>
                 <input
                     id='buy-item-text-field'

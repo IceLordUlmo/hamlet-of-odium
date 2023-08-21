@@ -77,6 +77,16 @@ export const sellItemThunk = (formData) => async (dispatch) => {
     return dispatch(loadInventoryThunk())
 }
 
+export const dropItemThunk = (formData) => async (dispatch) => {
+    const res = await fetch('api/items/drop', {
+        method: "DELETE",
+        body: formData
+    })
+
+    const data = await res.json();
+    return dispatch(loadInventoryThunk())
+}
+
 // initial state
 const initialState = { items: {}, inventory: {} };
 // reducer
