@@ -60,7 +60,7 @@ export default function AttackFormModal({ attack }) {
     return (
         <div className='buy-attack-modal-external'>
             <h1>Name and describe this attack:</h1>
-            {error.length ? error.map(e => <p className='buy-attack-modal-error'>{e}</p>) : null}
+            {error.length ? error.map(e => <p key={error.indexOf(e)} className='buy-attack-modal-error'>{e}</p>) : null}
             <form className='buy-attack-form' onSubmit={handleSubmit} encType='multipart/form-data'>
                 <label htmlFor='buy-attack-label'>
                     Attack Name
