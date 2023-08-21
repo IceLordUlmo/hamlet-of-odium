@@ -10,10 +10,15 @@ def seed_users():
         username='marnie', email='marnie@aa.io', password='password')
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password')
-
+    powerLevel = User(
+        username='IceLordUlmo', email='secret@gmail.com', password='password')
+    
+    powerLevel.level = 9999
+    powerLevel.ramen = 99999
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(powerLevel)
     db.session.commit()
 
 

@@ -42,7 +42,7 @@ def seed_monsters():
     demo5 = Monster(
         name='[redacted]',
         description='for to the bidden',
-        max_hp = 999,
+        max_hp = 1,
         damage = 999,
         ramen = 777,
         experience = 9999,
