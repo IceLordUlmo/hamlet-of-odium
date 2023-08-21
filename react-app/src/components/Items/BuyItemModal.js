@@ -60,38 +60,41 @@ export default function BuyItemModal({ item }) {
     }, [name, description, quantity])
 
     return (
-        <div className='buy-item-modal-external'>
+        <div className='modal-external'>
             <h1>Name and describe this item:</h1>
-            {error.length ? error.map(e => <p className='buy-item-modal-error'>{e}</p>) : null}
-            <form className='buy-item-form' onSubmit={handleSubmit} encType='multipart/form-data'>
-                <label htmlFor='buy-item-label'>
+            {error.length ? error.map(e => <p id='error'>{e}</p>) : null}
+            <form className='modal-form' onSubmit={handleSubmit} encType='multipart/form-data'>
+                <label htmlFor='modal-label'>
                     Item Name
                 </label>
                 <input
-                    id='buy-item-text-field'
+                    id='modal-text-field'
                     type='text'
                     value={name}
                     required
                     onChange={(e) => setName(e.target.value)}
                     placeholder='Name this item' />
-                <label htmlFor='buy-item-label'>
+                <label htmlFor='modal-label'>
                     Item Description
                 </label>
                 <input
-                    id='buy-item-text-field'
+                    id='modal-text-field'
                     type='text'
                     value={description}
                     required
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder='Describe this item' />
+                <label htmlFor='modal-label'>
+                    Quantity
+                </label>
                 <input
-                    id='buy-item-text-field'
+                    id='modal-text-field'
                     type='integer'
                     value={quantity}
                     required
                     onChange={(e) => setQuantity(e.target.value)}
                     placeholder='How many would you like to buy?' />
-                <button id='buy-item-submit-button'
+                <button id='modal-submit-button'
                     type='submit'
                     disabled={disableButton}>
                     Make Purchase

@@ -4,25 +4,32 @@ import './Encounter.css'
 import * as fightActions from '../../store/fights'
 import * as attackActions from '../../store/attacks'
 import * as mapActions from '../../store/maps'
+import * as itemActions from '../../store/items'
 import { useParams, useHistory } from 'react-router-dom';
-
+import NonCombat from './NonCombat'
 const Encounter = () => {
     const dispatch = useDispatch();
     const { encounterId } = useParams();
     const encounters = useSelector((store) => store.maps.encounters)
     const fight = useSelector((store) => store.fights.fight)
     const monsters = useSelector((store) => store.fights.monsters)
+    const items = useSelector((store) => store.items.items)
     const history = useHistory()
     let defeatedMonster = useSelector((store) => store.fights.defeated);
     useEffect(() => {
-        dispatch(attackActions.loadLearnedAttacksThunk()).then(
-            dispatch(mapActions.loadMapThunk())).then(
-                dispatch(fightActions.loadMonstersThunk())).then(
-                    dispatch(fightActions.loadFightThunk()))
+        dispatch(itemActions.loadItemsThunk()).then(
+            dispatch(attackActions.loadLearnedAttacksThunk())).then(
+                dispatch(mapActions.loadMapThunk())).then(
+                    dispatch(fightActions.loadMonstersThunk())).then(
+                        dispatch(fightActions.loadFightThunk()))
     }, [dispatch])
     const encounterList = Object.values(encounters)
     if (encounterList.length == 0 || fight == null) {
         return null
+    }
+
+    if (!encounters[encounterId].fight_monster_id) {
+        return (<NonCombat encounter={encounters[encounterId]} items={items} />)
     }
 
     const attack = async () => {

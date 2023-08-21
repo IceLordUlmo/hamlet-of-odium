@@ -58,15 +58,15 @@ export default function AttackFormModal({ attack }) {
     }, [name, description])
 
     return (
-        <div className='buy-attack-modal-external'>
+        <div className='modal-external'>
             <h1>Name and describe this attack:</h1>
-            {error.length ? error.map(e => <p key={error.indexOf(e)} className='buy-attack-modal-error'>{e}</p>) : null}
-            <form className='buy-attack-form' onSubmit={handleSubmit} encType='multipart/form-data'>
-                <label htmlFor='buy-attack-label'>
+            {error.length ? error.map(e => <p key={error.indexOf(e)} id='error'>{e}</p>) : null}
+            <form className='modal-form' onSubmit={handleSubmit} encType='multipart/form-data'>
+                <label htmlFor='modal-label'>
                     Attack Name
                 </label>
                 <input
-                    id='buy-attack-text-field'
+                    id='modal-text-field'
                     type='text'
                     value={name}
                     required
@@ -76,13 +76,13 @@ export default function AttackFormModal({ attack }) {
                     Attack Description
                 </label>
                 <input
-                    id='buy-attack-text-field'
+                    id='modal-text-field'
                     type='text'
                     value={description}
                     required
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder='Describe this attack' />
-                <button id='buy-attack-submit-button'
+                <button id='modal-submit-button'
                     type='submit'
                     disabled={disableButton}>
                     Create New Attack
