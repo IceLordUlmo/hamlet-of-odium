@@ -1,0 +1,7 @@
+#display-modal-button {
+    align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 2px;
+}
