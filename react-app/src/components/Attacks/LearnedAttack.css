@@ -1,0 +1,11 @@
+#learned-attack {
+    border: 2px gray solid;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+}
+
+#learned-buttons-wrapper {
+    display: flex;
+    justify-content: space-around;
+}

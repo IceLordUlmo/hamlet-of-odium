@@ -17,8 +17,12 @@ export default function ForgetAttackModal({ userAttack }) {
         <div>
             <div> Are you sure you want to forget the {userAttack.name} attack?</div>
             <div>
-                <button onClick={deleteItem}>I don't know kung-fu! (forget)</button>
-                <button onClick={closeModal}>Remember us. Remember that we once lived. (don't forget)</button>
+                <div id='forget-button'>
+                    <button onClick={deleteItem}>I don't know kung-fu! (forget)</button>
+                </div>
+                <div id='forget-button'>
+                    <button onClick={closeModal}>Remember us. Remember that we once lived. (don't forget)</button>
+                </div>
             </div>
         </div>
     )

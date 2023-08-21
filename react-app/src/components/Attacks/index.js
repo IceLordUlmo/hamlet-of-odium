@@ -25,13 +25,13 @@ const Attacks = () => {
     return (
         <div>
             <h2>Attacks To Learn:</h2>
-            <p>
+            <div id='attacks-available-grid'>
                 {trainableList.map(attack => <TrainableAttack key={attack.id} attack={attack} ramen={user.ramen} />)}
-            </p>
+            </div>
             <h2>Attacks You Know:</h2>
-            <p>
+            <div id='attacks-known-grid'>
                 {learnedList.map(userAttack => <LearnedAttack key={userAttack.id} userAttack={userAttack} />)}
-            </p>
+            </div>
         </div>
     )
 }
