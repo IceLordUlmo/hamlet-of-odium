@@ -42,6 +42,7 @@ def train_attack():
     description = form['description'].data
 
     if current_user.ramen >= attack.ramen_cost:
+        current_user.ramen = current_user.ramen - attack.ramen_cost
         userAttack = UserAttack(name = name, 
                                 description= description, 
                                 user_id = current_user.id,
