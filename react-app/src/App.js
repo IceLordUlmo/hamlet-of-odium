@@ -25,12 +25,14 @@ function App() {
   const user = useSelector(state => state.session.user)
   return (
     <>
+      {isLoaded && ((user) ? <div id='left-app'>
+        <Route component={LeftNav} />
+      </div> : null)}
       {isLoaded && (
-        <div id='app-container'>
-          {(user) ? <div id='left-app'>
-            <Route component={LeftNav} />
-          </div> : <div></div>}
 
+        <div id='app-container'>
+
+          <div id='left-dummy-app'><div id='dummy'></div></div>
 
           {(user) ? <div id='right-app'>
             <Switch>
