@@ -10,3 +10,5 @@ from .item import Item
 from .location import Location
 from .monster import Monster
 from .userattack import UserAttack
+from .recipe import Recipe
+from .recipeingredient import RecipeIngredient
