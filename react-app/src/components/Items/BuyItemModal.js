@@ -9,8 +9,6 @@ export default function BuyItemModal({ item }) {
     const dispatch = useDispatch()
     const history = useHistory()
     const { closeModal } = useModal()
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
     const [quantity, setQuantity] = useState('')
     const [error, setError] = useState([]);
     const [disableButton, setDisableButton] = useState(true);
@@ -24,8 +22,6 @@ export default function BuyItemModal({ item }) {
         }
 
         const form = new FormData();
-        form.append('name', name);
-        form.append('description', description)
         form.append('quantity', quantity)
         form.append('itemId', item.id)
         //form.append('damage')
@@ -44,8 +40,6 @@ export default function BuyItemModal({ item }) {
         const newErrors = []
         let max = Math.floor(user.ramen / item.ramen_cost)
         if (max > 1000) max = 1000;
-        if (name.length < 1 || name.length > 255) newErrors.push("Name must be between 1 and 255 characters");
-        if (description.length < 1 || description.length > 255) newErrors.push("Description must be between 1 and 255 characters");
         if (parseInt(quantity) < 1 || parseInt(quantity) > max) newErrors.push(`Quantity must be between 1 and ${max}`)
         setError(newErrors);
 
@@ -57,7 +51,7 @@ export default function BuyItemModal({ item }) {
     useEffect(() => {
         setDisableButton(false);
         errorCheck();
-    }, [name, description, quantity])
+    }, [quantity])
 
     return (
         <div className='modal-external'>
@@ -65,25 +59,13 @@ export default function BuyItemModal({ item }) {
             {error.length ? error.map(e => <p id='error'>{e}</p>) : null}
             <form className='modal-form' onSubmit={handleSubmit} encType='multipart/form-data'>
                 <label htmlFor='modal-label'>
-                    Item Name
+                    Item Name: {item.name}
                 </label>
-                <input
-                    id='modal-text-field'
-                    type='text'
-                    value={name}
-                    required
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder='Name this item' />
+
                 <label htmlFor='modal-label'>
-                    Item Description
+                    Item Description: {item.description}
                 </label>
-                <input
-                    id='modal-text-field'
-                    type='text'
-                    value={description}
-                    required
-                    onChange={(e) => setDescription(e.target.value)}
-                    placeholder='Describe this item' />
+
                 <label htmlFor='modal-label'>
                     Quantity
                 </label>

@@ -23,7 +23,7 @@ const LeftNav = () => {
         <div id='left-nav-container'>
             <div>
                 <div id='left-nav-logo'>
-                    <img src={Logo}></img>
+                    <img src={Logo} alt='Hamlet of Odium Logo'></img>
                 </div>
                 <div id='left-nav-content'>
                     <div>
@@ -36,6 +36,7 @@ const LeftNav = () => {
                         </div>
                         <p><Link id='nav-link' to='/maps'>Map</Link></p>
                         <p><Link id='nav-link' to='/items'>Items</Link></p>
+                        <p><Link id='nav-link' to='/recipes'>Recipes</Link></p>
                         <p><Link id='nav-link' to='/attacks'>Attacks</Link></p>
                         <p><Link id='nav-link' to='/howtoplay'>How To Play</Link></p>
                     </div>

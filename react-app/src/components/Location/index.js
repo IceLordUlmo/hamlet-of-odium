@@ -11,7 +11,7 @@ const Location = () => {
 
 
 
-    const locationHere = (Object.values(locations).filter((location) => location.id == locationId))[0]
+    const locationHere = (Object.values(locations).filter((location) => location.id === locationId))[0]
     const encountersList = Object.values(encounters).filter((encounter) => encounter.location_id === parseInt(locationId))
     const dispatch = useDispatch();
 

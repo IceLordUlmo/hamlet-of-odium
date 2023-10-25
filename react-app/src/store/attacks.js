@@ -67,12 +67,11 @@ export const editAttackThunk = (formData) => async (dispatch) => {
 }
 
 export const forgetThunk = (formData) => async (dispatch) => {
-    const res = await fetch(`api/attacks/train`, {
+    await fetch(`api/attacks/train`, {
         method: "DELETE",
         body: formData
     })
 
-    const data = await res.json();
     dispatch(loadLearnedAttacksThunk())
 }
 // initial state

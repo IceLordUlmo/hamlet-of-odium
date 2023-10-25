@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from "../../store/session"
 import './Maps.css'
 import * as mapActions from '../../store/maps'
 import MapLocation from './MapLocation'
@@ -18,12 +17,6 @@ const Map = () => {
         dispatch(mapActions.loadMapThunk())
         //dispatch(itemActions.loadInventoryThunk())
     }, [dispatch])
-
-
-    function LogOut(e) {
-        e.preventDefault();
-        dispatch(logout());
-    }
 
     return (
         <div>

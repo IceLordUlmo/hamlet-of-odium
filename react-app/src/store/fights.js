@@ -4,7 +4,6 @@ import { refresh } from './session'
 const GET_FIGHT = 'odium/fights/GET_FIGHT'
 const GET_MONSTERS = 'odium/fights/GET_MONSTER'
 const DEAL_DAMAGE = 'odium/fights/DEAL_DAMAGE'
-const DELETE_FIGHT = 'odium/fights/DELETE_FIGHT'
 const MONSTER_DEFEATED = 'odium/fights/DEFEATED'
 const CLEAR_DEFEATED = 'odium/fights/CLEAR_DEFEATED'
 // action creators
@@ -118,6 +117,7 @@ const fightsReducer = (state = initialState, action) => {
             return newState
         case CLEAR_DEFEATED:
             newState = { monsters: { ...state.monsters }, fight: { ...state.fight }, defeated: null }
+            return
         default:
             return state;
 

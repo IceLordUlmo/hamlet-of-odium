@@ -9,6 +9,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.item_routes import item_routes
 from .api.maps_routes import maps_routes
+from .api.recipes_routes import recipes_routes
 from .api.fight_routes import fight_routes
 from .api.monster_routes import monster_routes
 from .api.attack_routes import attack_routes
@@ -35,6 +36,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(item_routes, url_prefix='/api/items')
 app.register_blueprint(maps_routes, url_prefix='/api/maps')
+app.register_blueprint(recipes_routes, url_prefix='/api/recipes')
 app.register_blueprint(attack_routes, url_prefix='/api/attacks')
 app.register_blueprint(fight_routes, url_prefix='/api/fight')
 app.register_blueprint(monster_routes, url_prefix='/api/monster')

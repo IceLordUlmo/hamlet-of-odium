@@ -15,7 +15,6 @@ const Encounter = () => {
     const monsters = useSelector((store) => store.fights.monsters)
     const items = useSelector((store) => store.items.items)
     const history = useHistory()
-    let defeatedMonster = useSelector((store) => store.fights.defeated);
     useEffect(() => {
         dispatch(itemActions.loadItemsThunk()).then(
             dispatch(attackActions.loadLearnedAttacksThunk())).then(
@@ -24,7 +23,7 @@ const Encounter = () => {
                         dispatch(fightActions.loadFightThunk()))
     }, [dispatch])
     const encounterList = Object.values(encounters)
-    if (encounterList.length == 0 || fight == null || Object.values(monsters).length == 0) {
+    if (encounterList.length === 0 || fight == null || Object.values(monsters).length === 0) {
         return null
     }
 
@@ -35,18 +34,17 @@ const Encounter = () => {
     const attack = async () => {
         const combat = await dispatch(fightActions.dealDamageThunk(1))
         console.log('combat object', combat)
-        if (combat.type == 'victory') {
-            defeatedMonster = true;
+        if (combat.type === 'victory') {
             dispatch(fightActions.monsterDefeatedAction())
             history.push('/victory')
         }
     }
 
-    if (fight.status == 'no fight') {
+    if (fight.status === 'no fight') {
         return null
     }
     //redirect to the appropriate encounter if we try to get into it in the wrong place
-    if (encounters[encounterId].fight_monster_id != fight.monster_id) {
+    if (encounters[encounterId].fight_monster_id !== fight.monster_id) {
         const destinationEncounterId = encounterList.filter(encounter => (encounter.fight_monster_id === fight.monster_id))[0].id
         history.push(`/encounters/${destinationEncounterId}`)
     }

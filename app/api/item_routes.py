@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, Item, InventoryItem, db
 from flask_login import current_user, login_required
-from app.forms import ItemForm, ItemUpdateForm, ItemDeleteForm
+from app.forms import ItemForm, ItemDeleteForm
 
 item_routes = Blueprint('item', __name__)
 
@@ -37,8 +37,6 @@ def buy_item():
     quantity = form['quantity'].data
 
     itemId = form['itemId'].data
-    name = form['name'].data
-    description = form['description'].data
     item = Item.query.filter(Item.id == itemId).first()
 
     if current_user.ramen >= (item.ramen_cost * quantity):
@@ -55,36 +53,19 @@ def buy_item():
         #         response = { 'error' : "Cannot change quantity in that way"}
         #         return response
        
-        inventoryEntry = InventoryItem(name = name, description = description, image_url = item.image_url, quantity = quantity, user_id = current_user.id)
+        inventoryEntry = InventoryItem(name = item.name, description = item.description, image_url = item.image_url, quantity = quantity, user_id = current_user.id)
         db.session.add(inventoryEntry)
         db.session.commit()
         response = inventoryEntry.to_dict()
     else:
         response = { 'error' : "Cannot afford"}
     return response
-@item_routes.route('/edit', methods=['PUT'])
-@login_required
-def edit_item():
-    form = ItemUpdateForm()
 
-    # quantity = form['quantity'].data
-
-    inventoryItemId = form['inventoryItemId'].data
-    name = form['name'].data
-    description = form['description'].data
-    inventoryItem = InventoryItem.query.filter(InventoryItem.id == inventoryItemId).first()
-
-    inventoryItem.name = name
-    inventoryItem.description = description
-
-    db.session.commit()
-    response = inventoryItem.to_dict()
-    
-    return response
 @item_routes.route('/sell', methods=['PUT'])
 @login_required
 def sell_item():
     return
+
 @item_routes.route('/drop', methods=['DELETE'])
 @login_required
 def drop_item():
