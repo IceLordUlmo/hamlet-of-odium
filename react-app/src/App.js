@@ -15,6 +15,7 @@ import Victory from './components/Encounter/Victory'
 import ErrorPage from './components/ErrorPage'
 import Leaderboard from './components/Leaderboard'
 import HowToPlay from './components/HowToPlay'
+import Recipes from './components/Recipes'
 import './App.css'
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ function App() {
               <ProtectedRoute exact path="/signup" component={HowToPlay} />
               <ProtectedRoute exact path="/howtoplay" component={HowToPlay} />
               <ProtectedRoute exact path="/leaderboard" component={Leaderboard} />
+              <ProtectedRoute exact path="/recipes" component={Recipes} />
               <Route path="*" component={ErrorPage} />
             </Switch>
           </div> : <div id='right-app-register'><Switch>

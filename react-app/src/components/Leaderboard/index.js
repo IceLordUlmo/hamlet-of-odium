@@ -1,5 +1,5 @@
-export default function () {
-    return (<div>
+const Leaderboard = () => {
 
-    </div>)
 }
+
+export default Leaderboard

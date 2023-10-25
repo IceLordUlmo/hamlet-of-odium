@@ -1,4 +1,5 @@
 from .db import db, add_prefix_for_prod, environment, SCHEMA
+from .recipeingredient import RecipeIngredient
 
 class Recipe(db.Model):
     __tablename__ = 'recipes'
@@ -10,7 +11,12 @@ class Recipe(db.Model):
     name = db.Column(db.String(255), nullable=False)
 
     def to_dict(self):
+        ingredients = RecipeIngredient.query.filter_by(recipe_id = self.id)
+        ingredientlist = []
+        for ing in ingredients:
+            ingredientlist.append(ing.to_dict())
         return {
             "id": self.id,
-            "name": self.name
+            "name": self.name,
+            "ingredients": ingredientlist
         }

@@ -78,12 +78,11 @@ export const sellItemThunk = (formData) => async (dispatch) => {
 }
 
 export const dropItemThunk = (formData) => async (dispatch) => {
-    const res = await fetch('api/items/drop', {
+    await fetch('api/items/drop', {
         method: "DELETE",
         body: formData
     })
 
-    const data = await res.json();
     return dispatch(loadInventoryThunk())
 }
 
