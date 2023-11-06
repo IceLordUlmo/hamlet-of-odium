@@ -136,6 +136,19 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('recipes',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=255), nullable=False),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('recipeingredients',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('recipe_id', sa.Integer(), nullable=True),
+    sa.Column('item_id', sa.Integer(), nullable=True),
+    sa.Column('quantity', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['recipe_id'], ['recipes.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     # ### end Alembic commands ###
 
 
