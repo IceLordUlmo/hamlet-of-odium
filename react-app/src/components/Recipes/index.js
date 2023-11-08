@@ -13,8 +13,8 @@ const Recipes = () => {
     let recipesList = Object.values(recipes)
 
     useEffect(() => {
-        dispatch(recipeActions.loadRecipesThunk())
         dispatch(itemActions.loadItemsThunk())
+        dispatch(recipeActions.loadRecipesThunk())
     }, [dispatch])
 
     return (
